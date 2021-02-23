@@ -1,5 +1,4 @@
 .navbar {
-  padding: 0px;
   background: #130227;
   min-height: 70px;
 }
@@ -40,9 +39,6 @@
 }
 
 @media screen and (min-width: 960px) {
-  .navbar {
-    padding: 0px 150px;
-  }
   .test-toggle {
     align-items: flex-start;
     flex-wrap: nowrap;

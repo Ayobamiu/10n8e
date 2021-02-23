@@ -1,0 +1,34 @@
+#footerSection {
+  background-color: #130227;
+  color: white;
+}
+#footerSection .contact {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.205);
+  padding: 100px 0;
+}
+#footerSection .contact h5 {
+  position: relative;
+}
+#footerSection .contact h5::after {
+  content: "";
+  height: 3px;
+  width: 50px;
+  background: #ffa700;
+  display: inline-block;
+  /* transform: translateY(100%); */
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  /* margin-top: 10px; */
+}
+#footerSection .copyright {
+  padding: 50px 0;
+  align-items: center;
+  display: flex;
+}
+#footerSection .copyright span {
+  margin-left: 100px;
+}
+#footerSection .footer-icon {
+  margin: 0 15px;
+}

@@ -4,7 +4,20 @@ import slideone from "../../../assets/img/slideone.png";
 import imagehomeone from "../../../assets/img/imagehomeone.png";
 import imagehometwo from "../../../assets/img/imagehometwo.png";
 import imagehomethree from "../../../assets/img/imagehomethree.png";
+import kit1 from "../../../assets/img/kit1.png";
+import kit2 from "../../../assets/img/kit2.png";
+import kit3 from "../../../assets/img/kit3.png";
+import sponsor1 from "../../../assets/img/sponsor1.png";
+import sponsor2 from "../../../assets/img/sponsor2.png";
+import sponsor3 from "../../../assets/img/sponsor3.png";
+import sponsor4 from "../../../assets/img/sponsor4.png";
+import sponsor5 from "../../../assets/img/sponsor5.png";
+import sponsor6 from "../../../assets/img/sponsor6.png";
+
+import logo from "../../../assets/img/10n80logo.png";
 import "./css/style.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Footer from "../../includes/Footer/Footer";
 
 const HomePage = () => {
   return (
@@ -113,23 +126,23 @@ const HomePage = () => {
           <h2 className="mb-50">Upcoming Events</h2>
           <div class="row g-2">
             <div class="col-6">
-              <div class="border bg-bluejik h-315 hide-overflow"></div>
+              <div class="border loading h-315 hide-overflow"></div>
             </div>
             <div class="col-6">
-              <div class="border bg-bluejik h-315 hide-overflow"></div>
+              <div class="border loading h-315 hide-overflow"></div>
             </div>
             <div class="col-6">
-              <div class="border bg-bluejik h-315 hide-overflow"></div>
+              <div class="border loading h-315 hide-overflow"></div>
             </div>
             <div class="col-6">
-              <div class="border bg-bluejik h-315 hide-overflow"></div>
+              <div class="border loading h-315 hide-overflow"></div>
             </div>
           </div>
         </div>
       </div>
       <div id="homepageSectionFour">
         <div class="container">
-          <h2 className="mb-50">Upcoming Events</h2>
+          <h2 className="mb-50">Highlights</h2>
           <div class="row g-2">
             <div class="col-6 col-md-4">
               <div class=" h-332 hide-overflow player-item">
@@ -226,63 +239,182 @@ const HomePage = () => {
       </div>
       <div id="homepageSectionFive">
         <div className="container">
-          <h2 className="mb-50">Upcoming Events</h2>
+          <h2 className="mb-50">10n8E Merch store</h2>
           <div
-            id="jerseysCarousel"
-            className="carousel slide"
+            id="carouselExampleControlsForKit"
+            class="carousel slide"
             data-bs-ride="carousel"
           >
-            <div className="carousel-indicators"></div>
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img
-                  src={slideone}
-                  className="d-block w-100 slide-image"
-                  alt="..."
-                />
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div className="d-block w-100 slide-item" alt="...">
+                  <div class="row g-2 justify-content-center">
+                    <div class="col-6 col-md-4">
+                      <div class="kit-container  hide-overflow">
+                        <div className="kit-image">
+                          <img src={kit1} alt="" className="kit-image-img" />
+                        </div>
+                        <h3>#35,000</h3>
+                        <p>Gamers hoodie jacket</p>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="kit-container  hide-overflow">
+                        <div className="kit-image">
+                          <img src={kit2} alt="" className="kit-image-img" />
+                        </div>
+                        <h3>#35,000</h3>
+                        <p>Gamers hoodie jacket</p>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4 hide-900">
+                      <div class="kit-container  hide-overflow">
+                        <div className="kit-image">
+                          <img src={kit3} alt="" className="kit-image-img" />
+                        </div>
+                        <h3>#35,000</h3>
+                        <p>Gamers hoodie jacket</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>{" "}
               </div>
-              <div className="carousel-item">
-                <img
-                  src={slideone}
-                  className="d-block w-100 slide-image"
-                  alt="..."
-                />
+              <div class="carousel-item">
+                <div className="d-block w-100 slide-item" alt="...">
+                  <div class="row g-2 justify-content-center">
+                    <div class="col-6 col-md-4">
+                      <div class="kit-container  hide-overflow">
+                        <div className="kit-image">
+                          <img src={kit1} alt="" className="kit-image-img" />
+                        </div>
+                        <h3>#35,000</h3>
+                        <p>Gamers hoodie jacket</p>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="kit-container  hide-overflow">
+                        <div className="kit-image">
+                          <img src={kit2} alt="" className="kit-image-img" />
+                        </div>
+                        <h3>#35,000</h3>
+                        <p>Gamers hoodie jacket</p>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4 hide-900">
+                      <div class="kit-container  hide-overflow">
+                        <div className="kit-image">
+                          <img src={kit3} alt="" className="kit-image-img" />
+                        </div>
+                        <h3>#35,000</h3>
+                        <p>Gamers hoodie jacket</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>{" "}
               </div>
-              <div className="carousel-item">
-                <img
-                  src={slideone}
-                  className="d-block w-100 slide-image"
-                  alt="..."
-                />
+              <div class="carousel-item">
+                <div className="d-block w-100 slide-item" alt="...">
+                  <div class="row g-2 justify-content-center">
+                    <div class="col-6 col-md-4">
+                      <div class="kit-container  hide-overflow">
+                        <div className="kit-image">
+                          <img src={kit1} alt="" className="kit-image-img" />
+                        </div>
+                        <h3>#35,000</h3>
+                        <p>Gamers hoodie jacket</p>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                      <div class="kit-container  hide-overflow">
+                        <div className="kit-image">
+                          <img src={kit2} alt="" className="kit-image-img" />
+                        </div>
+                        <h3>#35,000</h3>
+                        <p>Gamers hoodie jacket</p>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-4 hide-900">
+                      <div class="kit-container  hide-overflow">
+                        <div className="kit-image">
+                          <img src={kit3} alt="" className="kit-image-img" />
+                        </div>
+                        <h3>#35,000</h3>
+                        <p>Gamers hoodie jacket</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>{" "}
               </div>
             </div>
             <button
-              className="carousel-control-prev"
+              class="carousel-control-prev"
               type="button"
-              data-bs-target="#jerseysCarousel"
+              data-bs-target="#carouselExampleControlsForKit"
               data-bs-slide="prev"
             >
               <span
-                className="carousel-control-prev-icon"
+                class="carousel-control-prev-icon"
                 aria-hidden="true"
               ></span>
-              <span className="visually-hidden">Previous</span>
+              <span class="visually-hidden">Previous</span>
             </button>
             <button
-              className="carousel-control-next"
+              class="carousel-control-next"
               type="button"
-              data-bs-target="#jerseysCarousel"
+              data-bs-target="#carouselExampleControlsForKit"
               data-bs-slide="next"
             >
               <span
-                className="carousel-control-next-icon"
+                class="carousel-control-next-icon"
                 aria-hidden="true"
               ></span>
-              <span className="visually-hidden">Next</span>
+              <span class="visually-hidden">Next</span>
             </button>
           </div>
-        </div>{" "}
+        </div>
+      </div>{" "}
+      <div id="homepageSectionSix">
+        <div class="container">
+          <h2 className="mb-50">Live Now</h2>
+          <div class="row ">
+            <div class="col-12 ">
+              <div class="border loading h-400 hide-overflow">
+                <ReactPlayer
+                  height="100%"
+                  width="100%"
+                  url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+                />{" "}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <div id="homepageSectionSeven">
+        <div class="container">
+          <h2 className="">Our Parners</h2>
+          <div class="row">
+            <div class="col-2 ">
+              <img src={sponsor1} alt="" />
+            </div>
+            <div class="col-2 ">
+              <img src={sponsor2} alt="" />
+            </div>
+            <div class="col-2 ">
+              <img src={sponsor3} alt="" />
+            </div>
+            <div class="col-2 ">
+              <img src={sponsor4} alt="" />
+            </div>
+            <div class="col-2 ">
+              <img src={sponsor5} alt="" />
+            </div>
+            <div class="col-2 ">
+              <img src={sponsor6} alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };

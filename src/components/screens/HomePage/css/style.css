@@ -1,3 +1,14 @@
+@keyframes loadingBlock {
+  0% {
+    background-color: rgba(0, 0, 0, 0.247);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.075);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.288);
+  }
+}
 #homepageSectionTwo {
   padding: 100px 0;
 }
@@ -26,12 +37,12 @@
   height: 332px;
   /* max-height: 315px; */
 }
-.hide-overflow {
-  overflow: hidden;
+.h-400 {
+  min-height: 50px;
+  height: 400px;
+  /* max-height: 315px; */
 }
-.mb-50 {
-  margin-bottom: 50px;
-}
+
 .bg-bluejik {
   background: #130227;
 }
@@ -41,6 +52,8 @@
 .player-box {
   height: 265px;
   overflow: hidden;
+  /* background-color: rgba(0, 0, 0, 0.068); */
+  animation: loadingBlock 1s infinite linear;
 }
 @media screen and (max-width: 960px) {
   #homepageSectionTwo {
@@ -64,4 +77,72 @@
     height: 152px;
     /* max-height: 315px; */
   }
+}
+#homepageSectionFive {
+  background-color: #130227;
+  padding: 100px 0;
+  color: white;
+}
+#homepageSectionFive .kit-container {
+  text-align: center;
+}
+#homepageSectionFive .kit-image {
+  height: 350px;
+}
+#homepageSectionFive .kit-image-img {
+  height: 100%;
+}
+#homepageSectionFive .slide-item {
+  height: 500px;
+  /* background-color: #ddd; */
+  /* padding: 0 150px; */
+}
+#homepageSectionFive .carousel-control-prev {
+  justify-content: flex-start;
+}
+#homepageSectionFive .carousel-control-next {
+  justify-content: flex-end;
+}
+/* #homepageSectionFive .carousel-control-next-icon {
+  background-image: url("../../../../assets/img/nextArrow.png");
+}
+#homepageSectionFive .carousel-control-prev-icon {
+  background-image: url("../../../../assets/img/prevArrow.png");
+} */
+#homepageSectionFive .slide-item {
+  height: 500px;
+  /* background-color: #ddd; */
+  /* padding: 0 150px; */
+}
+@media screen and (max-width: 1200px) {
+  #homepageSectionFive .slide-item {
+    height: 500px;
+    /* background-color: #ddd; */
+    padding: 0 10px;
+  }
+}
+@media screen and (max-width: 960px) {
+  #homepageSectionFive {
+    background-color: #130227;
+  }
+  #homepageSectionFive .slide-item {
+    height: 500px;
+    /* background-color: #ddd; */
+    padding: 0 10px;
+  }
+  .hide-900 {
+    display: none;
+  }
+}
+#homepageSectionSix {
+  padding: 150px 300px;
+}
+#homepageSectionSeven {
+  margin-bottom: 150px;
+}
+#homepageSectionSeven .row {
+  align-items: center;
+}
+.loading{
+    animation: loadingBlock 1s infinite linear;   
 }

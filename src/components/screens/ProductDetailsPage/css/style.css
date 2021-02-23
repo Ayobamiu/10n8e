@@ -1,0 +1,98 @@
+#ProductDetailsPage {
+  width: 100%;
+}
+#ProductDetailsPage .blue {
+  height: 450px;
+  width: 100%;
+  background-color: blue;
+  background-image: url("../../../../assets/img/ProductDetailsPageBg.png");
+  position: relative;
+}
+#ProductDetailsPage .blue h1 {
+  color: #ffa700;
+  margin-top: 60px;
+}
+#ProductDetailsPage .blue .text {
+  margin-top: 150px;
+  color: white;
+  padding-right: 100px;
+}
+#ProductDetailsPage .blue .text h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#ProductDetailsPage .blue .text span {
+  font-size: 25px;
+  /* font-weight: bold; */
+  text-transform: uppercase;
+  color: #ffa700;
+}
+#ProductDetailsPage .blue .text ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+#ProductDetailsPage .blue .text li {
+  margin-right: 25px;
+}
+#ProductDetailsPage .blue .text li.active {
+  color: #ffa700;
+}
+#ProductDetailsPage .blue .text .m-10 {
+  margin-right: 10px;
+}
+#ProductDetailsPage .blue .button1 {
+  color: black;
+}
+#ProductDetailsPage .blue .button2 {
+  background-color: #9863c1;
+  border: none;
+  color: black;
+}
+#ProductDetailsPage .big-img {
+  height: 500px;
+  width: 450px;
+  background-color: #ddd;
+  top: 150px;
+  left: 240px;
+  position: absolute;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#ProductDetailsPage .big-img img {
+  height: 90%;
+}
+#ProductDetailsPage .white {
+  height: 200px;
+  margin-bottom: 200px;
+}
+#ProductDetailsPage .white .col-6 {
+  display: flex;
+  align-items: flex-end;
+  height: 200px;
+}
+#ProductDetailsPage .small-img {
+  height: 150px;
+  width: 150px;
+  background-color: #ddd;
+  display: inline-block;
+  margin: 0px 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#ProductDetailsPage .small-img img {
+  height: 90%;
+}
+#ProductDetailsPage .form-select {
+  background-color: transparent;
+  color: white;
+}
+#ProductDetailsPage .form-select option {
+  color: black;
+}

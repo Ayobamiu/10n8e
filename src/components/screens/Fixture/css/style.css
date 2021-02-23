@@ -1,0 +1,53 @@
+#fixture #sectionOne {
+  background-image: url("../../../../assets/img/fixtureImage1.png");
+}
+#fixturePageSectionTwo {
+  padding: 100px 200px;
+}
+#fixturePageSectionTwo .event-item {
+  background-color: #ddd;
+  text-align: center;
+}
+#fixturePageSectionTwo .event-item .head {
+  background-color: #130227;
+  color: white;
+}
+#fixturePageSectionTwo .event-item .head h2 {
+  padding: 10px;
+}
+#fixturePageSectionTwo .event-item .vs {
+  padding: 50px;
+}
+#fixturePageSectionTwo .event-item .vs div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+#fixturePageSectionTwo .event-item .vs span {
+  font-size: 40px;
+}
+#fixturePageSectionThree {
+  padding: 100px 200px;
+}
+#fixturePageSectionThree .new-event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 100px;
+  background-color: #ddd;
+  margin: 20px 0;
+}
+#fixturePageSectionThree .new-event-item div {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+#fixturePageSectionThree .new-event-item p {
+  margin: 0 20px;
+}
+#fixturePageSectionThree .new-event-item span {
+  margin: 20px;
+  font-size: 40px;
+}

@@ -1,0 +1,96 @@
+#sectionOne {
+  background-image: url("../../../../assets/img/storeImage1.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 500px;
+  width: 100%;
+}
+#sectionOne .text {
+  padding-top: 120px;
+}
+#sectionOne h1 {
+  font-size: 70px;
+  text-transform: uppercase;
+  color: white;
+}
+#sectionOne span {
+  color: #ffa700;
+}
+#sectionOne .images {
+  height: 500px;
+  position: relative;
+}
+#sectionOne .float-shirt {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+#sectionOne .float-ps {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+}
+#storePageSectionTwo {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+#storePageSectionTwo .store-item .image {
+  background-color: #ddd;
+  height: 350px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+#storePageSectionTwo .store-item .image img {
+  max-width: 100%;
+}
+#storePageSectionTwo .store-item .head {
+  font-size: 20px;
+}
+#storePageSectionTwo .store-item .price {
+  color: orangered;
+}
+#storePageSectionTwo .store-item .head h2 {
+  padding: 10px;
+}
+#storePageSectionTwo .store-item .vs {
+  padding: 50px;
+}
+#storePageSectionTwo .store-item .vs div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+#storePageSectionTwo .store-item .vs span {
+  font-size: 40px;
+}
+#storePageSectionThree {
+  padding: 100px 200px;
+}
+#storePageSectionThree .new-store-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 100px;
+  background-color: #ddd;
+  margin: 20px 0;
+}
+#storePageSectionThree .new-store-item div {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+#storePageSectionThree .new-store-item p {
+  margin: 0 20px;
+}
+#storePageSectionThree .new-store-item span {
+  margin: 20px;
+  font-size: 40px;
+}
+a {
+  text-decoration: none;
+}
