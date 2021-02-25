@@ -9,8 +9,9 @@ import AboutPage from "../../screens/AboutPage/AboutPage";
 import Fixture from "../../screens/Fixture/Fixture";
 import StorePage from "../../screens/StorePage/StorePage";
 import ProductDetailsPage from "../../screens/ProductDetailsPage/ProductDetailsPage";
+import PaymentPage from "../../screens/PaymentPage/PaymentPage";
 
-const NavBar = () => {
+const NavBar = (props) => {
   const doTog = () => {
     const menu = document.getElementById("test-toggle");
 
@@ -27,6 +28,7 @@ const NavBar = () => {
     });
     e.target.classList.add("bb");
   };
+
   return (
     <BrowserRouter>
       <div className="navbar">
@@ -38,22 +40,47 @@ const NavBar = () => {
               </Link>
             </li>
             <li class="item">
-              <Link to="/" className="item-link" onClick={addBg}>
+              <Link
+                to="/"
+                className={`item-link ${
+                  window.location.pathname === "/" && "bb"
+                }`}
+                onClick={addBg}
+              >
                 Home
               </Link>
             </li>
             <li class="item">
-              <Link to="/store" className="item-link" onClick={addBg}>
+              <Link
+                to="/store"
+                className="item-link"
+                className={`item-link ${
+                  window.location.pathname === "/store" && "bb"
+                }`}
+                onClick={addBg}
+              >
                 Store
               </Link>
             </li>
             <li class="item">
-              <Link to="/about" className="item-link" onClick={addBg}>
+              <Link
+                to="/about"
+                className={`item-link ${
+                  window.location.pathname === "/about" && "bb"
+                }`}
+                onClick={addBg}
+              >
                 About us
               </Link>
             </li>
             <li class="item">
-              <Link to="/fixture" className="item-link" onClick={addBg}>
+              <Link
+                to="/fixture"
+                className={`item-link ${
+                  window.location.pathname === "/fixture" && "bb"
+                }`}
+                onClick={addBg}
+              >
                 Fixtures
               </Link>
             </li>
@@ -66,6 +93,7 @@ const NavBar = () => {
         </div>
       </div>
       <Switch>
+        <Route component={PaymentPage} path="/pay" />
         <Route component={ProductDetailsPage} path="/store/:productId" />
         <Route component={StorePage} path="/store" />
         <Route component={Fixture} path="/fixture" />

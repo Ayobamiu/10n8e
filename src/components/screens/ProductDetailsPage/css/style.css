@@ -11,6 +11,10 @@
 #ProductDetailsPage .blue h1 {
   color: #ffa700;
   margin-top: 60px;
+  margin-bottom: 60px;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 38px;
 }
 #ProductDetailsPage .blue .text {
   margin-top: 150px;
@@ -55,9 +59,9 @@
   height: 500px;
   width: 450px;
   background-color: #ddd;
-  top: 150px;
+  /* top: 150px;
   left: 240px;
-  position: absolute;
+  position: absolute; */
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -95,4 +99,67 @@
 }
 #ProductDetailsPage .form-select option {
   color: black;
+}
+@media screen and (max-width: 900px) {
+  #ProductDetailsPage .blue {
+    height: 350px;
+    width: 100%;
+  }
+  #ProductDetailsPage .blue h1 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 2;
+    font-size: 20px;
+  }
+  #ProductDetailsPage .blue .text {
+    margin-top: 0px;
+    padding-right: 20px;
+    position: relative;
+    z-index: 2;
+    font-size: 13px;
+  }
+  #ProductDetailsPage .blue .text h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  #ProductDetailsPage .blue .text span {
+    font-size: 12px;
+  }
+  #ProductDetailsPage .blue .text li {
+    margin-right: 25px;
+  }
+  #ProductDetailsPage .blue .text .m-10 {
+    margin-right: 10px;
+  }
+  #ProductDetailsPage .big-img {
+    position: absolute;
+    height: 150px;
+    width: 100px;
+    /* top: 30px; */
+    left: unset;
+    /* right: 10px; */
+  }
+  #ProductDetailsPage .white {
+    height: auto;
+    margin-bottom: 100px;
+  }
+  #ProductDetailsPage .white .col-6 {
+    height: 90px;
+  }
+  #ProductDetailsPage .small-img {
+    height: 60px;
+    width: 60px;
+    margin: 0px 10px;
+  }
+  #ProductDetailsPage .small-img img {
+    height: 90%;
+  }
+}
+@media screen and (max-width: 700px) {
+  #ProductDetailsPage .big-img {
+    top: 30px;
+    left: unset;
+    right: 10px;
+  }
 }

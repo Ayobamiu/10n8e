@@ -6,6 +6,10 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.205);
   padding: 100px 0;
 }
+#footerSection h5 {
+  font-size: 20px;
+  font-weight: 400;
+}
 #footerSection .contact h5 {
   position: relative;
 }
@@ -31,4 +35,27 @@
 }
 #footerSection .footer-icon {
   margin: 0 15px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.footer-p {
+  font-size: 15px;
+  line-height: 30px;
+  font-weight: 400;
+}
+.first-row {
+  align-items: center;
+}
+@media screen and (max-width: 900px) {
+  #footerSection .copyright span {
+    margin-left: 0px;
+  }
+  #footerSection h5 {
+    font-size: 17px;
+  }
+  .footer-p {
+    font-size: 13px;
+    line-height: 25px;
+  }
 }

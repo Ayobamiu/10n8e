@@ -12,21 +12,26 @@ import { Link } from "react-router-dom";
 
 const StorePage = () => {
   return (
-    <div className="store">
+    <div className="store"> 
       <div id="sectionOne">
         <div className="container">
           <div className="row">
-            <div className="col-6">
+            <div className="col-md-6 col-12">
               <div className="text">
                 <h1>
                   Buy quality <br /> <span>gears & WEARS!</span>
                 </h1>
               </div>
             </div>
-            <div className="col-6">
+            <div className="col-md-6 col-12">
               <div className="images">
-                <img src={storePs1} alt="" className="float-ps" />
-                <img src={storeShirt1} alt="" className="float-shirt" />
+                <img src={storePs1} alt="" className="float-ps" height="90%" />
+                <img
+                  src={storeShirt1}
+                  alt=""
+                  className="float-shirt"
+                  height="90%"
+                />
               </div>
             </div>
           </div>
@@ -45,8 +50,7 @@ const StorePage = () => {
                 <p className="price"># 305,000</p>
               </Link>
             </div>
-          
- 
+
             <div class="col-6 col-md-4">
               <Link to="/store/2" class=" h-400 hide-overflow store-item">
                 <div className="image">
@@ -101,7 +105,7 @@ const StorePage = () => {
                 <p className="price"># 305,000</p>
               </Link>
             </div>
-          
+
             <div class="col-6 col-md-4">
               <Link to="/store/2" class=" h-400 hide-overflow store-item">
                 <div className="image">
@@ -120,7 +124,7 @@ const StorePage = () => {
                 <p className="price"># 305,000</p>
               </Link>
             </div>
-          
+
             <div class="col-6 col-md-4">
               <Link to="/store/2" class=" h-400 hide-overflow store-item">
                 <div className="image">
@@ -139,7 +143,7 @@ const StorePage = () => {
                 <p className="price"># 305,000</p>
               </Link>
             </div>
-          
+
             <div class="col-6 col-md-4">
               <Link to="/store/2" class=" h-400 hide-overflow store-item">
                 <div className="image">

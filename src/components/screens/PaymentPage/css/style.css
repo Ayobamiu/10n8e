@@ -1,0 +1,35 @@
+#paymentPage .white {
+  /* background-color: red; */
+  min-height: 800px;
+  /* padding: 100px 300px; */
+  width: 60%;
+}
+#paymentPage .grey {
+  background-color: rgba(0, 0, 0, 0.13);
+  min-height: 800px;
+}
+#paymentPage .col-md-7,
+#paymentPage .col-md-5 {
+  padding: 0;
+}
+#paymentPage .image-box {
+  margin-left: 20px;
+  height: 170px;
+  width: 90%;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.288);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#paymentPage table{
+  margin-top: 15px;
+}
+#paymentPage tr td:first-child {
+  font-weight: bold;
+}
+#paymentPage tr td:last-child {
+  /* font-weight: bold; */
+  padding-left: 30px;
+  /* font-size: 30px; */
+}

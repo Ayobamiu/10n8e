@@ -3,6 +3,7 @@ import Footer from "../../includes/Footer/Footer";
 import NavBar from "../../includes/NavBar/NavBar";
 import "./css/style.css";
 import ProductDetailsPageImg from "../../../assets/img/ProductDetailsPageImg.png";
+import { Link } from "react-router-dom";
 
 const ProductDetailsPage = () => {
   return (
@@ -10,10 +11,13 @@ const ProductDetailsPage = () => {
       <div className="blue">
         <div className="container">
           <div className="row">
-            <div className="col-6">
+            <div className="col-md-6 col-12">
               <h1>Product Overview</h1>
+              <div className="big-img">
+                <img src={ProductDetailsPageImg} alt="" />
+              </div>
             </div>
-            <div className="col-6">
+            <div className="col-md-6 col-9">
               <div className="text">
                 <h2>gamers sweat shirt</h2>
                 <p>
@@ -21,7 +25,7 @@ const ProductDetailsPage = () => {
                   Production and 3-4 days for shipping
                 </p>
                 <div className="row">
-                  <div className="col-3">
+                  <div className="col-md-3 col-4">
                     <span># 35,000</span>
                   </div>
                   <div className="col-3">
@@ -42,22 +46,20 @@ const ProductDetailsPage = () => {
                   <li>XL</li>
                   <li>XL</li>
                 </ul>
-                <button
-                  class="btn btn-lg m-10 btn-primary button1"
-                  type="submit"
-                >
-                  Button
-                </button>
-                <button class="btn btn-lg btn-primary button2" type="submit">
-                  Button
+                <Link to="/pay">
+                  <button
+                    class="btn  m-10 mb-10 btn-primary button1"
+                    type="submit"
+                  >
+                    Buy Now
+                  </button>
+                </Link>
+                <button class="btn mb-10 btn-primary button2" type="submit">
+                  Add to Cart
                 </button>
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="big-img">
-          <img src={ProductDetailsPageImg} alt="" />
         </div>
       </div>
       <div className="white">

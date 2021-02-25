@@ -29,7 +29,7 @@ const Fixture = () => {
       </div>
       <div id="fixturePageSectionTwo">
         <div class="container">
-          <h2 className="mb-50">Highlights</h2>
+          <h2 className="mb-50">Upcomming Events</h2>
           <div class="row g-3">
             <div class="col-6 col-md-4">
               <div class=" h-332 hide-overflow event-item">
@@ -132,7 +132,7 @@ const Fixture = () => {
       </div>
       <div id="fixturePageSectionThree">
         <div class="container">
-          <h2 className="mb-50">Highlights</h2>
+          <h2 className="mb-50">February</h2>
           <div className="new-event-item">
             <div>
               <img src={team1logo} alt="" />

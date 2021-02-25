@@ -26,7 +26,8 @@
   margin-bottom: 20px;
 }
 #fixturePageSectionTwo .event-item .vs span {
-  font-size: 40px;
+  font-size: 25px;
+  color: #df4b29;
 }
 #fixturePageSectionThree {
   padding: 100px 200px;
@@ -46,8 +47,61 @@
 }
 #fixturePageSectionThree .new-event-item p {
   margin: 0 20px;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 31px;
 }
 #fixturePageSectionThree .new-event-item span {
   margin: 20px;
-  font-size: 40px;
+  font-size: 25px;
+  color: #df4b29;
+}
+#fixturePageSectionTwo .event-item .vs img {
+  height: 70px;
+}
+#fixturePageSectionThree .event-item .vs img {
+  height: 54px;
+}
+@media screen and (max-width: 900px) {
+  #fixturePageSectionTwo {
+    padding: 10px;
+  }
+  #fixturePageSectionTwo .event-item h2 {
+    font-size: 20px;
+  }
+  #fixturePageSectionTwo .event-item .vs {
+    padding: 5px;
+  }
+  #fixturePageSectionTwo .event-item .vs div {
+    padding: 2px;
+    margin-bottom: 2px;
+  }
+  #fixturePageSectionTwo .event-item .vs span {
+    font-size: 16px;
+  }
+  #fixturePageSectionTwo .event-item .vs img {
+    height: 40px;
+  }
+  #fixturePageSectionThree {
+    padding: 10px;
+  }
+  #fixturePageSectionThree .new-event-item {
+    padding: 10px;
+  }
+  #fixturePageSectionThree .new-event-item img {
+    height: 40px;
+  }
+  #fixturePageSectionThree .new-event-item div {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+  }
+  #fixturePageSectionThree .new-event-item p {
+    margin: 0 2px;
+    font-size: 10px;
+  }
+  #fixturePageSectionThree .new-event-item span {
+    margin: 20px;
+    font-size: 15px;
+  }
 }

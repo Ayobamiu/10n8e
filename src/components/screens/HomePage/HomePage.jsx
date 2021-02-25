@@ -18,6 +18,7 @@ import logo from "../../../assets/img/10n80logo.png";
 import "./css/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from "../../includes/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -123,7 +124,7 @@ const HomePage = () => {
       </div>
       <div id="homepageSectionThree">
         <div class="container">
-          <h2 className="mb-50">Upcoming Events</h2>
+          <h2 className="mb-50">Past Results</h2>
           <div class="row g-2">
             <div class="col-6">
               <div class="border loading h-315 hide-overflow"></div>
@@ -250,31 +251,37 @@ const HomePage = () => {
                 <div className="d-block w-100 slide-item" alt="...">
                   <div class="row g-2 justify-content-center">
                     <div class="col-6 col-md-4">
-                      <div class="kit-container  hide-overflow">
-                        <div className="kit-image">
-                          <img src={kit1} alt="" className="kit-image-img" />
+                      <Link to="/store/2">
+                        <div class="kit-container  hide-overflow">
+                          <div className="kit-image">
+                            <img src={kit1} alt="" className="kit-image-img" />
+                          </div>
+                          <h3>#35,000</h3>
+                          <p>Gamers hoodie jacket</p>
                         </div>
-                        <h3>#35,000</h3>
-                        <p>Gamers hoodie jacket</p>
-                      </div>
+                      </Link>
                     </div>
                     <div class="col-6 col-md-4">
-                      <div class="kit-container  hide-overflow">
-                        <div className="kit-image">
-                          <img src={kit2} alt="" className="kit-image-img" />
+                      <Link to="/store/2">
+                        <div class="kit-container  hide-overflow">
+                          <div className="kit-image">
+                            <img src={kit1} alt="" className="kit-image-img" />
+                          </div>
+                          <h3>#35,000</h3>
+                          <p>Gamers hoodie jacket</p>
                         </div>
-                        <h3>#35,000</h3>
-                        <p>Gamers hoodie jacket</p>
-                      </div>
+                      </Link>
                     </div>
                     <div class="col-6 col-md-4 hide-900">
-                      <div class="kit-container  hide-overflow">
-                        <div className="kit-image">
-                          <img src={kit3} alt="" className="kit-image-img" />
+                      <Link to="/store/2">
+                        <div class="kit-container  hide-overflow">
+                          <div className="kit-image">
+                            <img src={kit1} alt="" className="kit-image-img" />
+                          </div>
+                          <h3>#35,000</h3>
+                          <p>Gamers hoodie jacket</p>
                         </div>
-                        <h3>#35,000</h3>
-                        <p>Gamers hoodie jacket</p>
-                      </div>
+                      </Link>
                     </div>
                   </div>
                 </div>{" "}
@@ -283,31 +290,37 @@ const HomePage = () => {
                 <div className="d-block w-100 slide-item" alt="...">
                   <div class="row g-2 justify-content-center">
                     <div class="col-6 col-md-4">
-                      <div class="kit-container  hide-overflow">
-                        <div className="kit-image">
-                          <img src={kit1} alt="" className="kit-image-img" />
+                      <Link to="/store/2">
+                        <div class="kit-container  hide-overflow">
+                          <div className="kit-image">
+                            <img src={kit1} alt="" className="kit-image-img" />
+                          </div>
+                          <h3>#35,000</h3>
+                          <p>Gamers hoodie jacket</p>
                         </div>
-                        <h3>#35,000</h3>
-                        <p>Gamers hoodie jacket</p>
-                      </div>
+                      </Link>
                     </div>
                     <div class="col-6 col-md-4">
-                      <div class="kit-container  hide-overflow">
-                        <div className="kit-image">
-                          <img src={kit2} alt="" className="kit-image-img" />
+                      <Link to="/store/2">
+                        <div class="kit-container  hide-overflow">
+                          <div className="kit-image">
+                            <img src={kit1} alt="" className="kit-image-img" />
+                          </div>
+                          <h3>#35,000</h3>
+                          <p>Gamers hoodie jacket</p>
                         </div>
-                        <h3>#35,000</h3>
-                        <p>Gamers hoodie jacket</p>
-                      </div>
+                      </Link>
                     </div>
                     <div class="col-6 col-md-4 hide-900">
-                      <div class="kit-container  hide-overflow">
-                        <div className="kit-image">
-                          <img src={kit3} alt="" className="kit-image-img" />
+                      <Link to="/store/2">
+                        <div class="kit-container  hide-overflow">
+                          <div className="kit-image">
+                            <img src={kit1} alt="" className="kit-image-img" />
+                          </div>
+                          <h3>#35,000</h3>
+                          <p>Gamers hoodie jacket</p>
                         </div>
-                        <h3>#35,000</h3>
-                        <p>Gamers hoodie jacket</p>
-                      </div>
+                      </Link>
                     </div>
                   </div>
                 </div>{" "}
@@ -315,32 +328,38 @@ const HomePage = () => {
               <div class="carousel-item">
                 <div className="d-block w-100 slide-item" alt="...">
                   <div class="row g-2 justify-content-center">
-                    <div class="col-6 col-md-4">
-                      <div class="kit-container  hide-overflow">
-                        <div className="kit-image">
-                          <img src={kit1} alt="" className="kit-image-img" />
+                    <div class="col-6 col-md-4"> 
+                      <Link to="/store/2">
+                        <div class="kit-container  hide-overflow">
+                          <div className="kit-image">
+                            <img src={kit1} alt="" className="kit-image-img" />
+                          </div>
+                          <h3>#35,000</h3>
+                          <p>Gamers hoodie jacket</p>
                         </div>
-                        <h3>#35,000</h3>
-                        <p>Gamers hoodie jacket</p>
-                      </div>
+                      </Link>
                     </div>
                     <div class="col-6 col-md-4">
-                      <div class="kit-container  hide-overflow">
-                        <div className="kit-image">
-                          <img src={kit2} alt="" className="kit-image-img" />
+                      <Link to="/store/2">
+                        <div class="kit-container  hide-overflow">
+                          <div className="kit-image">
+                            <img src={kit1} alt="" className="kit-image-img" />
+                          </div>
+                          <h3>#35,000</h3>
+                          <p>Gamers hoodie jacket</p>
                         </div>
-                        <h3>#35,000</h3>
-                        <p>Gamers hoodie jacket</p>
-                      </div>
+                      </Link>
                     </div>
                     <div class="col-6 col-md-4 hide-900">
-                      <div class="kit-container  hide-overflow">
-                        <div className="kit-image">
-                          <img src={kit3} alt="" className="kit-image-img" />
+                      <Link to="/store/2">
+                        <div class="kit-container  hide-overflow">
+                          <div className="kit-image">
+                            <img src={kit1} alt="" className="kit-image-img" />
+                          </div>
+                          <h3>#35,000</h3>
+                          <p>Gamers hoodie jacket</p>
                         </div>
-                        <h3>#35,000</h3>
-                        <p>Gamers hoodie jacket</p>
-                      </div>
+                      </Link>
                     </div>
                   </div>
                 </div>{" "}
@@ -393,22 +412,22 @@ const HomePage = () => {
         <div class="container">
           <h2 className="">Our Parners</h2>
           <div class="row">
-            <div class="col-2 ">
+            <div class="col-6 m-10 h-120 col-md-2">
               <img src={sponsor1} alt="" />
             </div>
-            <div class="col-2 ">
+            <div class="col-6 m-10 h-120 col-md-2">
               <img src={sponsor2} alt="" />
             </div>
-            <div class="col-2 ">
+            <div class="col-6 m-10 h-120 col-md-2">
               <img src={sponsor3} alt="" />
             </div>
-            <div class="col-2 ">
+            <div class="col-6 m-10 h-120 col-md-2">
               <img src={sponsor4} alt="" />
             </div>
-            <div class="col-2 ">
+            <div class="col-6 m-10 h-120 col-md-2">
               <img src={sponsor5} alt="" />
             </div>
-            <div class="col-2 ">
+            <div class="col-6 m-10 h-120 col-md-2">
               <img src={sponsor6} alt="" />
             </div>
           </div>

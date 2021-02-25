@@ -21,7 +21,10 @@
 .test-toggle li a {
   text-decoration: none;
   color: white;
+  font-size: 13px;
+  font-weight: 600;
 }
+
 .test-toggle li a.bb {
   border-bottom: 3px solid #ffa700;
   color: #ffa700;
@@ -44,6 +47,12 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     margin: 0;
+  }
+  .test-toggle li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
   }
   .test-toggle .logo {
     order: 0;
