@@ -3,10 +3,16 @@
   min-height: 800px;
   /* padding: 100px 300px; */
   width: 60%;
+  padding-top: 80px;
 }
 #paymentPage .grey {
   background-color: rgba(0, 0, 0, 0.13);
   min-height: 800px;
+  padding-top: 150px;
+}
+#paymentPage .grey h3 {
+  font-size: 20px;
+  font-weight: bold;
 }
 #paymentPage .col-md-7,
 #paymentPage .col-md-5 {
@@ -22,7 +28,10 @@
   justify-content: center;
   align-items: center;
 }
-#paymentPage table{
+#paymentPage .image-box img {
+  height: 90%;
+}
+#paymentPage table {
   margin-top: 15px;
 }
 #paymentPage tr td:first-child {
@@ -32,4 +41,111 @@
   /* font-weight: bold; */
   padding-left: 30px;
   /* font-size: 30px; */
+}
+#paymentPage form {
+  margin-top: 20px;
+}
+#paymentPage form input {
+  height: 50px;
+  border-radius: 10px;
+}
+
+#paymentPage .border {
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#paymentPage .border input {
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+  border-radius: 0px;
+  padding: 0;
+}
+#paymentPage .border.long-form input {
+  border-bottom: none;
+  padding: 0;
+  height: 50px;
+}
+#paymentPage .border.long-form .row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+}
+#paymentPage form .row {
+  padding-right: 0;
+}
+#paymentPage form .row .col-4 {
+  padding-left: 0;
+}
+#paymentPage form .col-3:last-child {
+  text-align: end;
+  padding: 0;
+}
+#paymentPage a:active {
+  color: #df4b29;
+}
+#paymentPage .nav-tabs {
+  border: none;
+}
+#paymentPage .nav-tabs .nav-link {
+  margin-bottom: unset;
+  background: 0 0;
+  border: 1px solid transparent;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.mtb-10 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.mtb-20 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.breadcrumb {
+  --bs-breadcrumb-divider: ">";
+  margin: 20px 0;
+}
+@media screen and (max-width: 900px) {
+  #paymentPage .white {
+    min-height: auto;
+    width: 100%;
+    padding-top: 10px;
+  }
+  .up-900 {
+    order: -1;
+  }
+  #paymentPage .grey {
+    background-color: rgba(0, 0, 0, 0.13);
+    min-height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  #paymentPage .col-md-7,
+  #paymentPage .col-md-5 {
+    padding: 0;
+  }
+
+  #paymentPage table {
+    margin-top: 10px;
+  }
+  #paymentPage form {
+    margin-top: 20px;
+  }
+  #paymentPage form input {
+    height: 40px;
+  }
+  #paymentPage .border.long-form input {
+    height: 40px;
+  }
+  .breadcrumb {
+    margin: 10px 0;
+  }
+  #paymentPage .border {
+    padding: 10px;
+  }
+
+  #paymentPage .border input {
+    height: 40px;
+  }
 }

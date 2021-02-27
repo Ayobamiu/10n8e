@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import slideone from "../../../assets/img/slideone.png";
 import imagehomeone from "../../../assets/img/imagehomeone.png";
@@ -19,8 +19,18 @@ import "./css/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from "../../includes/Footer/Footer";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Spinner } from "reactstrap";
+import { products, loadProducts } from "../../../store/productSlice";
 
 const HomePage = () => {
+  const allProducts = useSelector(products);
+  console.log(allProducts);
+  const dispatch = useDispatch();
+  const [good, setGood] = useState(false);
+  useEffect(() => {
+    dispatch(loadProducts());
+  }, [good]);
   return (
     <div className="homepage">
       <div id="homepageSectionOne">
@@ -328,7 +338,7 @@ const HomePage = () => {
               <div class="carousel-item">
                 <div className="d-block w-100 slide-item" alt="...">
                   <div class="row g-2 justify-content-center">
-                    <div class="col-6 col-md-4"> 
+                    <div class="col-6 col-md-4">
                       <Link to="/store/2">
                         <div class="kit-container  hide-overflow">
                           <div className="kit-image">

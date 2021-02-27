@@ -42,9 +42,15 @@
 .mb-50 {
   margin-bottom: 50px;
 }
-.mb-10{
+.mb-10 {
   margin-bottom: 10px;
 }
 h2 {
   font-weight: 700;
+}
+.peach-text {
+  color: rgba(223, 74, 41, 0.9);
+}
+.cursor-pointer {
+  cursor: pointer;
 }

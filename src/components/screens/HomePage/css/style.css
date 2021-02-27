@@ -23,7 +23,7 @@
   height: calc(100vh - 70px);
 }
 .slide-image {
-  height: 100%;
+  height: fit-content;
 }
 .h-120 {
   min-height: 50px;
@@ -67,6 +67,12 @@
   animation: loadingBlock 1s infinite linear;
 }
 @media screen and (max-width: 960px) {
+  #homepageSectionOne {
+    height: auto;
+  }
+  .slide-image {
+    height: 100%;
+  }
   #homepageSectionTwo {
     padding: 10px 0;
   }
