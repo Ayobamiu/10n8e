@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import storeImage1 from "../../../assets/img/storeImage1.png";
 import product1 from "../../../assets/img/product1.png";
 import product2 from "../../../assets/img/product2.png";
 import product3 from "../../../assets/img/product3.png";
+import noimage from "../../../assets/img/noimage.jpg";
 import storePs1 from "../../../assets/img/storePs1.png";
 import storeShirt1 from "../../../assets/img/storeShirt1.png";
 import "./css/style.css";
 import Footer from "../../includes/Footer/Footer";
 import { Link } from "react-router-dom";
+import { products, loadProducts } from "../../../store/productSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 const StorePage = () => {
+  const allProducts = useSelector(products);
+  const dispatch = useDispatch();
+  const [good, setGood] = useState(false);
+  useEffect(() => {
+    dispatch(loadProducts());
+  }, [good]);
   return (
-    <div className="store"> 
+    <div className="store">
       <div id="sectionOne">
         <div className="container">
           <div className="row">
@@ -39,120 +48,30 @@ const StorePage = () => {
       </div>
       <div id="storePageSectionTwo">
         <div class="container">
-          <h2 className="mb-50">Upcomming Events</h2>
+          <h2 className="mb-50">Store</h2>
           <div class="row g-3">
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
-
-            <div class="col-6 col-md-4">
-              <Link to="/store/2" class=" h-400 hide-overflow store-item">
-                <div className="image">
-                  <img src={product3} alt="" />
-                </div>
-                <h2 className="head">PS 4 Controller</h2>
-                <p className="price"># 305,000</p>
-              </Link>
-            </div>
+            {allProducts.map((product) => (
+              <div class="col-6 col-md-4">
+                <Link
+                  to={`/store/${product._id}`}
+                  class=" h-400 hide-overflow store-item"
+                >
+                  <div className="image">
+                    <img
+                      src={
+                        product.images && product.images.length > 0
+                          ? product.images[0].image
+                          : noimage
+                      }
+                      height="90%"
+                      alt=""
+                    />
+                  </div>
+                  <h2 className="head col-12 text-truncate">{product.title}</h2>
+                  <p className="price"># {product.price}</p>
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </div>

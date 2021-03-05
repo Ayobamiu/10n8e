@@ -22,9 +22,9 @@ const Footer = () => {
               </div>
             </div>
             <div className="col-md-4 col-12 mb-20">
-              <h5>Contact Us</h5>
+              <h5>Address</h5>
               <div className="row">
-                <div className="col-12 footer-p">10N8E Pvt. Ltd 1-A,</div>
+                <div className="col-12 footer-p">10N8E  Pvt. Ltd 1-A,</div>
                 <div className="col-12 footer-p">
                   Tigaria Rao, Kandala Road, Indore 452016.
                 </div>

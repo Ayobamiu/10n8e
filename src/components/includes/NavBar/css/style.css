@@ -29,6 +29,12 @@
   border-bottom: 3px solid #ffa700;
   color: #ffa700;
 }
+.test-toggle .logo {
+  order: -1 !important;
+}
+.test-toggle .cart {
+  order: 0 !important;
+}
 .test-toggle .toggle {
   order: 1;
 }
@@ -67,4 +73,20 @@
   .test-toggle .toggle {
     display: none;
   }
+  .test-toggle .cart {
+    order: 3 !important;
+  }
+}
+.bg-yellow {
+  background-color: #ffa700;
+}
+.item-link {
+  position: relative;
+}
+.top-right {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  padding: 3px;
+  border-radius: 50%;
 }

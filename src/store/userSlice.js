@@ -16,15 +16,18 @@ const slice = createSlice({
       users.loading = false;
       users.lastFetch = Date.now();
     },
+    
     usersRequestFailed: (users, action) => {
       users.loading = false;
     },
+
     userAdded: (users, action) => {
       users.list.push(action.payload.user);
       localStorage.setItem("authToken", action.payload.token);
       logUserIn(action.payload.user.email, action.payload.user.password);
       users.status = { message: "Sign Up Success", color: "green" };
     },
+
     userAddFailed: (users, action) => {
       users.status = {
         message: action.payload.response.data.error,

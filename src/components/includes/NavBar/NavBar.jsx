@@ -1,6 +1,10 @@
 import "./css/style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faCoffee,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import logo from "../../../assets/img/10n80logo.png";
@@ -10,8 +14,14 @@ import Fixture from "../../screens/Fixture/Fixture";
 import StorePage from "../../screens/StorePage/StorePage";
 import ProductDetailsPage from "../../screens/ProductDetailsPage/ProductDetailsPage";
 import PaymentPage from "../../screens/PaymentPage/PaymentPage";
+import Upload from "../../screens/Upload/Upload";
+import Cart from "../../screens/Cart/Cart";
+import { useSelector, useDispatch } from "react-redux";
+import { carts } from "../../../store/productSlice";
 
 const NavBar = (props) => {
+  const cartsNow = useSelector(carts);
+
   const doTog = () => {
     const menu = document.getElementById("test-toggle");
 
@@ -84,6 +94,14 @@ const NavBar = (props) => {
                 Fixtures
               </Link>
             </li>
+            <li class="cart">
+              <Link to="/cart" className="item-link" onClick={addBg}>
+                <FontAwesomeIcon icon={faShoppingCart} color="#ffa700" />
+                <span class="badge rounded-pill bg-yellow top-right">
+                  {cartsNow.length }
+                </span>
+              </Link>
+            </li>
             <li class="toggle" onClick={doTog}>
               <Link to="#">
                 <FontAwesomeIcon icon={faBars} />
@@ -93,6 +111,8 @@ const NavBar = (props) => {
         </div>
       </div>
       <Switch>
+        <Route component={Cart} path="/cart" />
+        <Route component={Upload} path="/upload" />
         <Route component={PaymentPage} path="/pay" />
         <Route component={ProductDetailsPage} path="/store/:productId" />
         <Route component={StorePage} path="/store" />

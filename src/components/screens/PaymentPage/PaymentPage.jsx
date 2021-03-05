@@ -1,32 +1,55 @@
-import React, { useState } from "react";
-import ReactPlayer from "react-player";
-import storeImage1 from "../../../assets/img/storeImage1.png";
-import product1 from "../../../assets/img/product1.png";
-import product2 from "../../../assets/img/product2.png";
-import product3 from "../../../assets/img/product3.png";
-import storePs1 from "../../../assets/img/storePs1.png";
-import storeShirt1 from "../../../assets/img/storeShirt1.png";
-import ProductDetailsPageImg from "../../../assets/img/ProductDetailsPageImg.png";
+import React, { useEffect, useState } from "react";
 import "./css/style.css";
-import Footer from "../../includes/Footer/Footer";
 import { Link } from "react-router-dom";
-import {
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
-  Row,
-  Col,
-} from "reactstrap";
+import { TabContent, TabPane, Row, Col } from "reactstrap";
 import classnames from "classnames";
+import {
+  product,
+  loadProduct,
+  loadProducts,
+  carts,
+  products,
+} from "../../../store/productSlice";
 
-const PaymentPage = () => {
+import { useSelector, useDispatch } from "react-redux";
+import queryString from "query-string";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+
+const PaymentPage = (props) => {
+  const parsed = queryString.parse(props.location.search);
+
   const [activeTab, setActiveTab] = useState("1");
+
+  const [firstName, setFirstName] = useState(null);
+  const [lastName, setLastName] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [state, setState] = useState(null);
+  const [city, setCity] = useState(null);
+  const [town, setTown] = useState(null);
+  const [phone, setPhone] = useState(null);
+  const [shippingEmail, setShippingEmail] = useState(null);
+  const [shippingAddress, setShippingAddress] = useState(null);
+  const [shippingPhone, setShippingPhone] = useState(null);
+
+  const [shippingFee, setShippingFee] = useState(1000);
+
+  const targetProducts = useSelector(products);
+  const targetProduct = useSelector(product);
+  const dispatch = useDispatch();
+  const [good, setGood] = useState(false);
+  useEffect(() => {
+    dispatch(loadProducts());
+    if (parsed.productId) {
+      dispatch(loadProduct(parsed.productId));
+    }
+  }, [good]);
+  const currentCarts = useSelector(carts);
+  const newCarts = currentCarts.map((cart) => {
+    const equiProduct = targetProducts.find(
+      (product) => product._id === cart.product
+    );
+    return { ...cart, ...equiProduct };
+  });
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -84,6 +107,41 @@ const PaymentPage = () => {
     );
   };
 
+  let money = 0;
+  if (parsed.productId) {
+    const callc = targetProduct.price * parsed.count;
+    // setTotalToPay(callc);
+    money = callc;
+  }
+  if (parsed.type === "cart") {
+    for (let index = 0; index < newCarts.length; index++) {
+      const cart = newCarts[index];
+      const callc = cart.price * cart.count;
+      money += callc;
+    }
+  }
+
+  const config = {
+    public_key: "FLWPUBK_TEST-5120f20f66db336ffc0f6131bcc49936-X",
+    tx_ref: Date.now(),
+    amount: money + shippingFee,
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: "user@gmail.com",
+      phonenumber: "07064586146",
+      name: "joel ugwumadu",
+    },
+    customizations: {
+      title: "my Payment Title",
+      description: "Payment for items in cart",
+      logo:
+        "https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg",
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
+
   return (
     <div id="paymentPage">
       <div className="row">
@@ -102,6 +160,7 @@ const PaymentPage = () => {
                             class="form-control"
                             id="inputAddress"
                             placeholder="First name"
+                            onChange={(e) => setFirstName(e.target.value)}
                           />
                         </div>
                         <div class="col-12 mtb-10">
@@ -110,6 +169,7 @@ const PaymentPage = () => {
                             class="form-control"
                             id="inputAddress2"
                             placeholder="Last name"
+                            onChange={(e) => setLastName(e.target.value)}
                           />
                         </div>
                         <div class="col-12 mtb-10">
@@ -118,6 +178,7 @@ const PaymentPage = () => {
                             class="form-control"
                             id="inputAddress2"
                             placeholder="Address"
+                            onChange={(e) => setAddress(e.target.value)}
                           />
                         </div>
                         <div class="col-md-6 mtb-10">
@@ -126,6 +187,7 @@ const PaymentPage = () => {
                             class="form-control"
                             id="inputEmail4"
                             placeholder="State"
+                            onChange={(e) => setState(e.target.value)}
                           />
                         </div>
                         <div class="col-md-6 mtb-10">
@@ -134,6 +196,7 @@ const PaymentPage = () => {
                             class="form-control"
                             id="inputPassword4"
                             placeholder="City"
+                            onChange={(e) => setCity(e.target.value)}
                           />
                         </div>
                         <div class="col-md-6 mtb-10">
@@ -142,6 +205,7 @@ const PaymentPage = () => {
                             class="form-control"
                             id="inputEmail4"
                             placeholder="Town"
+                            onChange={(e) => setTown(e.target.value)}
                           />
                         </div>
                         <div class="col-md-6 mtb-10">
@@ -150,6 +214,7 @@ const PaymentPage = () => {
                             class="form-control"
                             id="inputPassword4"
                             placeholder="Phone number"
+                            onChange={(e) => setPhone(e.target.value)}
                           />
                         </div>
 
@@ -197,7 +262,10 @@ const PaymentPage = () => {
                                 type="password"
                                 class="form-control"
                                 id="inputPassword"
-                                placeholder="ratdans@gmail.com"
+                                placeholder="myemail@email.com"
+                                onChange={(e) =>
+                                  setShippingEmail(e.target.value)
+                                }
                               />
                             </div>
                           </div>
@@ -214,6 +282,9 @@ const PaymentPage = () => {
                                 class="form-control"
                                 id="inputPassword"
                                 placeholder="08176432118"
+                                onChange={(e) =>
+                                  setShippingPhone(e.target.value)
+                                }
                               />
                             </div>
                           </div>
@@ -230,6 +301,9 @@ const PaymentPage = () => {
                                 class="form-control"
                                 id="inputPassword"
                                 placeholder="Nwora Molokwu Street, Umukabi village, Amawbia Awka, DC 20030, United States"
+                                onChange={(e) =>
+                                  setShippingAddress(e.target.value)
+                                }
                               />
                             </div>
                           </div>
@@ -335,17 +409,24 @@ const PaymentPage = () => {
                         >
                           &#12296; Previous
                         </div>
-                        <div className="col-3 mtb-10">
-                          <button
-                            type="submit"
-                            class="btn btn-primary"
-                            onClick={(e) => e.preventDefault()}
-                          >
-                            Pay
-                          </button>
-                        </div>
+                        <div className="col-3 mtb-10"></div>
                       </div>
                     </form>
+
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        handleFlutterPayment({
+                          callback: (response) => {
+                            console.log(response);
+                            closePaymentModal(); // this will close the modal programmatically
+                          },
+                          onClose: () => {},
+                        });
+                      }}
+                    >
+                      Pay Now
+                    </button>
                   </Row>
                 </TabPane>
               </TabContent>
@@ -355,42 +436,58 @@ const PaymentPage = () => {
         <div className="col-12 col-md-5 up-900">
           <div className="grey container">
             <h2>Item(s) Information</h2>
-            <div className="row">
-              <div className="col-6 col-md-3">
-                <div className="image-box">
-                  <img src={ProductDetailsPageImg} alt="" />
+            {parsed.type === "cart" &&
+              newCarts.map((cart) => (
+                <div className="row mb-10">
+                  <div className="col-6">{cart.title}</div>
+                  <div className="col-3">{cart.count}</div>
+                  <div className="col-3">{cart.price}</div>
+                </div>
+              ))}
+            {parsed.productId && (
+              <div className="row mb-10">
+                <div className="col-6 col-md-3">
+                  <div className="image-box">
+                    <img
+                      src={
+                        targetProduct.images && targetProduct.images[0].image
+                      }
+                      alt=""
+                      width="100%"
+                    />
+                  </div>
+                </div>
+                <div className="col-12 col-md-8">
+                  <h3>Gamers sweat shirt</h3>
+                  <table>
+                    <tr>
+                      <td>Qty</td>
+                      <td>{parsed.count}pcs</td>
+                    </tr>
+                    <tr>
+                      <td>Size</td>
+                      <td>L</td>
+                    </tr>
+                    <tr>
+                      <td>Price</td>
+                      <td>#35,000</td>
+                    </tr>
+                  </table>
                 </div>
               </div>
-              <div className="col-12 col-md-8">
-                <h3>Gamers sweat shirt</h3>
-                <table>
-                  <tr>
-                    <td>Qty</td>
-                    <td>2pcs</td>
-                  </tr>
-                  <tr>
-                    <td>Size</td>
-                    <td>L</td>
-                  </tr>
-                  <tr>
-                    <td>Price</td>
-                    <td>#35,000</td>
-                  </tr>
-                </table>
-              </div>
-            </div>
+            )}
             <hr />
             <div className="row">
-              <div className="col-3"></div>
-              <div className="col-md-8 col-12">
+              <div className="col-md-7"></div>
+              <div className="col-md-3 col-12">
                 <table>
                   <tr>
                     <td>Shipping</td>
-                    <td>#1000</td>
+                    <td>N{shippingFee}</td>
                   </tr>
                   <tr>
                     <td>Total</td>
-                    <td>#36,000</td>
+                    <td>N{money + shippingFee}</td>
                   </tr>
                 </table>
               </div>

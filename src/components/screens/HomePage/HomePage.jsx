@@ -13,6 +13,7 @@ import sponsor3 from "../../../assets/img/sponsor3.png";
 import sponsor4 from "../../../assets/img/sponsor4.png";
 import sponsor5 from "../../../assets/img/sponsor5.png";
 import sponsor6 from "../../../assets/img/sponsor6.png";
+import noimage from "../../../assets/img/noimage.jpg";
 
 import logo from "../../../assets/img/10n80logo.png";
 import "./css/style.css";
@@ -22,15 +23,19 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Spinner } from "reactstrap";
 import { products, loadProducts } from "../../../store/productSlice";
+import { loadhighlights, highlights } from "../../../store/highlightSlice";
+import moment from "moment";
 
 const HomePage = () => {
   const allProducts = useSelector(products);
-  console.log(allProducts);
+  const allHighlights = useSelector(highlights);
   const dispatch = useDispatch();
   const [good, setGood] = useState(false);
   useEffect(() => {
     dispatch(loadProducts());
+    dispatch(loadhighlights());
   }, [good]);
+  console.log(allHighlights);
   return (
     <div className="homepage">
       <div id="homepageSectionOne">
@@ -109,7 +114,7 @@ const HomePage = () => {
             <span className="visually-hidden">Next</span>
           </button>
         </div>
-      </div>{" "}
+      </div>
       <div id="homepageSectionTwo">
         <div class="container">
           <h2 className="mb-50">Upcoming Events</h2>
@@ -155,96 +160,21 @@ const HomePage = () => {
         <div class="container">
           <h2 className="mb-50">Highlights</h2>
           <div class="row g-2">
-            <div class="col-6 col-md-4">
-              <div class=" h-332 hide-overflow player-item">
-                <div className="player-box">
-                  <ReactPlayer
-                    height="100%"
-                    width="100%"
-                    url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-                  />
+            {allHighlights.map((item) => (
+              <div class="col-6 col-md-4">
+                <div class=" h-332 hide-overflow player-item">
+                  <div className="player-box">
+                    <ReactPlayer height="100%" width="100%" url={item.link} />
+                  </div>
+                  <p className="col-12 text-truncate">
+                    <b>{item.title}</b>
+                  </p>
+                  <p className="text-muted">
+                    {moment(item.createdAt).format("MMM Do YY")}
+                  </p>
                 </div>
-                <p>
-                  <b>Back to black ops</b>
-                </p>
-                <p className="text-muted">2 Feb. 2021</p>
               </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div class=" h-332 hide-overflow player-item">
-                <div className="player-box">
-                  <ReactPlayer
-                    height="100%"
-                    width="100%"
-                    url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-                  />
-                </div>
-                <p>
-                  <b>Back to black ops</b>
-                </p>
-                <p className="text-muted">2 Feb. 2021</p>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div class=" h-332 hide-overflow player-item">
-                <div className="player-box">
-                  <ReactPlayer
-                    height="100%"
-                    width="100%"
-                    url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-                  />
-                </div>
-                <p>
-                  <b>Back to black ops</b>
-                </p>
-                <p className="text-muted">2 Feb. 2021</p>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div class=" h-332 hide-overflow player-item">
-                <div className="player-box">
-                  <ReactPlayer
-                    height="100%"
-                    width="100%"
-                    url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-                  />
-                </div>
-                <p>
-                  <b>Back to black ops</b>
-                </p>
-                <p className="text-muted">2 Feb. 2021</p>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div class=" h-332 hide-overflow player-item">
-                <div className="player-box">
-                  <ReactPlayer
-                    height="100%"
-                    width="100%"
-                    url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-                  />
-                </div>
-                <p>
-                  <b>Back to black ops</b>
-                </p>
-                <p className="text-muted">2 Feb. 2021</p>
-              </div>
-            </div>
-            <div class="col-6 col-md-4">
-              <div class=" h-332 hide-overflow player-item">
-                <div className="player-box">
-                  <ReactPlayer
-                    height="100%"
-                    width="100%"
-                    url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-                  />
-                </div>
-                <p>
-                  <b>Back to black ops</b>
-                </p>
-                <p className="text-muted">2 Feb. 2021</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -260,119 +190,66 @@ const HomePage = () => {
               <div class="carousel-item active">
                 <div className="d-block w-100 slide-item" alt="...">
                   <div class="row g-2 justify-content-center">
-                    <div class="col-6 col-md-4">
-                      <Link to="/store/2">
-                        <div class="kit-container  hide-overflow">
-                          <div className="kit-image">
-                            <img src={kit1} alt="" className="kit-image-img" />
+                    {allProducts.slice(0, 3).map((product) => (
+                      <div class="col-6 col-md-4">
+                        <Link to={`/store/${product._id}`}>
+                          <div class="kit-container  hide-overflow">
+                            {product.images[0].image ? (
+                              <div className="kit-image">
+                                <img
+                                  src={
+                                    product.images && product.images.length > 0
+                                      ? product.images[0].image
+                                      : noimage
+                                  }
+                                  alt=""
+                                  className="kit-image-img"
+                                />
+                              </div>
+                            ) : (
+                              <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                              </div>
+                            )}
+                            <h3>#{product.price}</h3>
+                            <p className="col-12 text-truncate">
+                              {product.title}
+                            </p>
                           </div>
-                          <h3>#35,000</h3>
-                          <p>Gamers hoodie jacket</p>
-                        </div>
-                      </Link>
-                    </div>
-                    <div class="col-6 col-md-4">
-                      <Link to="/store/2">
-                        <div class="kit-container  hide-overflow">
-                          <div className="kit-image">
-                            <img src={kit1} alt="" className="kit-image-img" />
-                          </div>
-                          <h3>#35,000</h3>
-                          <p>Gamers hoodie jacket</p>
-                        </div>
-                      </Link>
-                    </div>
-                    <div class="col-6 col-md-4 hide-900">
-                      <Link to="/store/2">
-                        <div class="kit-container  hide-overflow">
-                          <div className="kit-image">
-                            <img src={kit1} alt="" className="kit-image-img" />
-                          </div>
-                          <h3>#35,000</h3>
-                          <p>Gamers hoodie jacket</p>
-                        </div>
-                      </Link>
-                    </div>
+                        </Link>
+                      </div>
+                    ))}
                   </div>
-                </div>{" "}
+                </div>
               </div>
               <div class="carousel-item">
                 <div className="d-block w-100 slide-item" alt="...">
                   <div class="row g-2 justify-content-center">
-                    <div class="col-6 col-md-4">
-                      <Link to="/store/2">
-                        <div class="kit-container  hide-overflow">
-                          <div className="kit-image">
-                            <img src={kit1} alt="" className="kit-image-img" />
+                    {allProducts.slice(3, 6).map((product) => (
+                      <div class="col-6 col-md-4">
+                        <Link to={`/store/${product._id}`}>
+                          <div class="kit-container  hide-overflow">
+                            <div className="kit-image">
+                              <img
+                                src={
+                                  product.images && product.images.length > 0
+                                    ? product.images[0].image
+                                    : noimage
+                                }
+                                alt=""
+                                className="kit-image-img"
+                              />
+                            </div>
+                            <h3>#{product.price}</h3>
+                            <p className="col-12 text-truncate">
+                              {product.title}
+                            </p>
                           </div>
-                          <h3>#35,000</h3>
-                          <p>Gamers hoodie jacket</p>
-                        </div>
-                      </Link>
-                    </div>
-                    <div class="col-6 col-md-4">
-                      <Link to="/store/2">
-                        <div class="kit-container  hide-overflow">
-                          <div className="kit-image">
-                            <img src={kit1} alt="" className="kit-image-img" />
-                          </div>
-                          <h3>#35,000</h3>
-                          <p>Gamers hoodie jacket</p>
-                        </div>
-                      </Link>
-                    </div>
-                    <div class="col-6 col-md-4 hide-900">
-                      <Link to="/store/2">
-                        <div class="kit-container  hide-overflow">
-                          <div className="kit-image">
-                            <img src={kit1} alt="" className="kit-image-img" />
-                          </div>
-                          <h3>#35,000</h3>
-                          <p>Gamers hoodie jacket</p>
-                        </div>
-                      </Link>
-                    </div>
+                        </Link>
+                      </div>
+                    ))}
                   </div>
-                </div>{" "}
-              </div>
-              <div class="carousel-item">
-                <div className="d-block w-100 slide-item" alt="...">
-                  <div class="row g-2 justify-content-center">
-                    <div class="col-6 col-md-4">
-                      <Link to="/store/2">
-                        <div class="kit-container  hide-overflow">
-                          <div className="kit-image">
-                            <img src={kit1} alt="" className="kit-image-img" />
-                          </div>
-                          <h3>#35,000</h3>
-                          <p>Gamers hoodie jacket</p>
-                        </div>
-                      </Link>
-                    </div>
-                    <div class="col-6 col-md-4">
-                      <Link to="/store/2">
-                        <div class="kit-container  hide-overflow">
-                          <div className="kit-image">
-                            <img src={kit1} alt="" className="kit-image-img" />
-                          </div>
-                          <h3>#35,000</h3>
-                          <p>Gamers hoodie jacket</p>
-                        </div>
-                      </Link>
-                    </div>
-                    <div class="col-6 col-md-4 hide-900">
-                      <Link to="/store/2">
-                        <div class="kit-container  hide-overflow">
-                          <div className="kit-image">
-                            <img src={kit1} alt="" className="kit-image-img" />
-                          </div>
-                          <h3>#35,000</h3>
-                          <p>Gamers hoodie jacket</p>
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                </div>{" "}
+                </div>
               </div>
             </div>
             <button
@@ -401,7 +278,7 @@ const HomePage = () => {
             </button>
           </div>
         </div>
-      </div>{" "}
+      </div>
       <div id="homepageSectionSix">
         <div class="container">
           <h2 className="mb-50">Live Now</h2>
@@ -412,7 +289,7 @@ const HomePage = () => {
                   height="100%"
                   width="100%"
                   url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-                />{" "}
+                />
               </div>
             </div>
           </div>
