@@ -154,7 +154,7 @@ const HomePage = (props) => {
       </div>
       <div id="homepageSectionTwo">
         <div class="container">
-          <h2 className="mb-50">Upcoming Events</h2>
+          <h2 className="mb-20">Upcoming Events</h2>
           <div class="row g-2">
             {allFixtures.map((item) => (
               <Link to={`/tournament/${item._id}`} class="col-6">
@@ -173,7 +173,7 @@ const HomePage = (props) => {
       </div>
       <div id="homepageSectionThree">
         <div class="container">
-          <h2 className="mb-50">Past Results</h2>
+          <h2 className="mb-20">Past Results</h2>
           <div class="row g-2">
             <div class="col-6">
               <div class="border loading h-315 hide-overflow"></div>
@@ -192,7 +192,7 @@ const HomePage = (props) => {
       </div>
       <div id="homepageSectionFour">
         <div class="container">
-          <h2 className="mb-50">Highlights</h2>
+          <h2 className="mb-20">Highlights</h2>
           <div class="row g-2">
             {allHighlights.map((item) => (
               <div class="col-6 col-md-4">
@@ -214,7 +214,7 @@ const HomePage = (props) => {
       </div>
       <div id="homepageSectionFive">
         <div className="container">
-          <h2 className="mb-50">10n8E Merch store</h2>
+          <h2 className="mb-20">10n8E Merch store</h2>
           <div
             id="carouselExampleControlsForKit"
             class="carousel slide"
@@ -324,7 +324,7 @@ const HomePage = (props) => {
       </div>
       <div id="homepageSectionSix">
         <div class="container">
-          <h2 className="mb-50">Live Now</h2>
+          <h2 className="mb-20">Live Now</h2>
           <div class="row ">
             <div class="col-12 ">
               <div
@@ -343,7 +343,7 @@ const HomePage = (props) => {
         </div>
       </div>
       <div id="homepageSectionSeven">
-        <div class="container">
+        <div class="container mb-20">
           <h2 className="">Our Patners</h2>
           <div class="row">
             <div class="col-6 m-10 h-120 col-md-2">

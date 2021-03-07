@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./css/style.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { TabContent, TabPane, Row, Col } from "reactstrap";
 import classnames from "classnames";
 import {
@@ -41,6 +41,9 @@ const PaymentPage = (props) => {
     dispatch(loadProducts());
     if (parsed.productId) {
       dispatch(loadProduct(parsed.productId));
+    }
+    if (!parsed.productId && parsed.type !== "cart") {
+      window.location = "/";
     }
   }, [good]);
   const currentCarts = useSelector(carts);
@@ -153,7 +156,21 @@ const PaymentPage = (props) => {
                   <Row>
                     <Col sm="12">
                       <Navv heading="Payment details" />
-                      <form class="row g-3">
+                      <form
+                        class="row g-3"
+                        onSubmit={(e) => {
+                          // e.preventDefault();
+                          firstName &&
+                            lastName &&
+                            address &&
+                            state &&
+                            city &&
+                            town &&
+                            phone &&
+                            toggle("2");
+                          e.preventDefault();
+                        }}
+                      >
                         <div class="col-12 mtb-10">
                           <input
                             type="text"
@@ -161,6 +178,7 @@ const PaymentPage = (props) => {
                             id="inputAddress"
                             placeholder="First name"
                             onChange={(e) => setFirstName(e.target.value)}
+                            required
                           />
                         </div>
                         <div class="col-12 mtb-10">
@@ -170,6 +188,7 @@ const PaymentPage = (props) => {
                             id="inputAddress2"
                             placeholder="Last name"
                             onChange={(e) => setLastName(e.target.value)}
+                            required
                           />
                         </div>
                         <div class="col-12 mtb-10">
@@ -179,6 +198,7 @@ const PaymentPage = (props) => {
                             id="inputAddress2"
                             placeholder="Address"
                             onChange={(e) => setAddress(e.target.value)}
+                            required
                           />
                         </div>
                         <div class="col-md-6 mtb-10">
@@ -188,6 +208,7 @@ const PaymentPage = (props) => {
                             id="inputEmail4"
                             placeholder="State"
                             onChange={(e) => setState(e.target.value)}
+                            required
                           />
                         </div>
                         <div class="col-md-6 mtb-10">
@@ -197,6 +218,7 @@ const PaymentPage = (props) => {
                             id="inputPassword4"
                             placeholder="City"
                             onChange={(e) => setCity(e.target.value)}
+                            required
                           />
                         </div>
                         <div class="col-md-6 mtb-10">
@@ -206,6 +228,7 @@ const PaymentPage = (props) => {
                             id="inputEmail4"
                             placeholder="Town"
                             onChange={(e) => setTown(e.target.value)}
+                            required
                           />
                         </div>
                         <div class="col-md-6 mtb-10">
@@ -215,6 +238,7 @@ const PaymentPage = (props) => {
                             id="inputPassword4"
                             placeholder="Phone number"
                             onChange={(e) => setPhone(e.target.value)}
+                            required
                           />
                         </div>
 
@@ -229,13 +253,7 @@ const PaymentPage = (props) => {
                             &#12296; Back to cart
                           </div>
                           <div className="col-3 mtb-10">
-                            <button
-                              class="btn btn-primary"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                toggle("2");
-                              }}
-                            >
+                            <button class="btn btn-primary" type="submit">
                               Continue
                             </button>
                           </div>
@@ -248,7 +266,16 @@ const PaymentPage = (props) => {
                   <Row>
                     <div className="shipping-form">
                       <Navv heading="Confirm details" />
-                      <form class="row g-3">
+                      <form
+                        class="row g-3"
+                        onSubmit={(e) => {
+                          shippingEmail &&
+                            shippingPhone &&
+                            shippingAddress &&
+                            toggle("3");
+                          e.preventDefault();
+                        }}
+                      >
                         <div className="border long-form">
                           <div class="mb-3 row">
                             <label
@@ -266,6 +293,7 @@ const PaymentPage = (props) => {
                                 onChange={(e) =>
                                   setShippingEmail(e.target.value)
                                 }
+                                required
                               />
                             </div>
                           </div>
@@ -285,6 +313,7 @@ const PaymentPage = (props) => {
                                 onChange={(e) =>
                                   setShippingPhone(e.target.value)
                                 }
+                                required
                               />
                             </div>
                           </div>
@@ -304,6 +333,7 @@ const PaymentPage = (props) => {
                                 onChange={(e) =>
                                   setShippingAddress(e.target.value)
                                 }
+                                required
                               />
                             </div>
                           </div>
@@ -319,14 +349,7 @@ const PaymentPage = (props) => {
                             &#12296; Previous
                           </Link>
                           <div className="col-3 mtb-10">
-                            <button
-                              type="submit"
-                              class="btn btn-primary"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                toggle("3");
-                              }}
-                            >
+                            <button type="submit" class="btn btn-primary">
                               Continue
                             </button>
                           </div>
@@ -338,7 +361,19 @@ const PaymentPage = (props) => {
                 <TabPane tabId="3">
                   <Row>
                     <Navv heading="Card details" />
-                    <form class="row g-3">
+                    <form
+                      class="row g-3"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleFlutterPayment({
+                          callback: (response) => {
+                            console.log(response);
+                            closePaymentModal(); // this will close the modal programmatically
+                          },
+                          onClose: () => {},
+                        });
+                      }}
+                    >
                       <div className="border">
                         <div class="mb-3">
                           <label
@@ -352,6 +387,7 @@ const PaymentPage = (props) => {
                             class="form-control"
                             id="exampleFormControlInput1"
                             placeholder="XXXXXXXXXXXXXXXXXX"
+                            required
                           />
                         </div>
                         <div class="mb-3">
@@ -366,6 +402,7 @@ const PaymentPage = (props) => {
                             class="form-control"
                             id="exampleFormControlInput1"
                             placeholder="XXXXXXXXXXXXXXXXXX"
+                            required
                           />
                         </div>
                         <div className="row">
@@ -381,6 +418,7 @@ const PaymentPage = (props) => {
                               class="form-control"
                               id="exampleFormControlInput1"
                               placeholder="MM/YY"
+                              required
                             />
                           </div>
                           <div class="col-md-6 mtb-10">
@@ -395,6 +433,7 @@ const PaymentPage = (props) => {
                               class="form-control"
                               id="exampleFormControlInput1"
                               placeholder="XXXXXX"
+                              required
                             />
                           </div>
                         </div>
@@ -411,22 +450,10 @@ const PaymentPage = (props) => {
                         </div>
                         <div className="col-3 mtb-10"></div>
                       </div>
+                      <button type="submit" className="btn btn-primary">
+                        Pay Now
+                      </button>
                     </form>
-
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => {
-                        handleFlutterPayment({
-                          callback: (response) => {
-                            console.log(response);
-                            closePaymentModal(); // this will close the modal programmatically
-                          },
-                          onClose: () => {},
-                        });
-                      }}
-                    >
-                      Pay Now
-                    </button>
                   </Row>
                 </TabPane>
               </TabContent>

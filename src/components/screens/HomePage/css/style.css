@@ -75,15 +75,22 @@
   }
   #homepageSectionTwo {
     padding: 10px 0;
+    /* min-height: 200px; */
   }
   #homepageSectionThree {
     padding: 10px 0;
+    /* min-height: 200px; */
   }
   #homepageSectionFour {
     padding: 10px 0;
+    /* min-height: 200px; */
   }
   .mb-50 {
     margin-bottom: 10px;
+  }
+  .mb-20 {
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
   .player-box {
     height: 100px;
@@ -151,7 +158,7 @@
 @media screen and (max-width: 960px) {
   #homepageSectionFive {
     background-color: #130227;
-    padding: 70px 0;
+    padding: 20px 0;
   }
   #homepageSectionFive .slide-item {
     height: 250px;
@@ -190,6 +197,9 @@
   animation: loadingBlock 1s infinite linear;
 }
 @media screen and (max-width: 960px) {
+  #homepage h2 {
+    font-weight: lighter;
+  }
   #homepageSectionSix {
     padding: 0px;
   }

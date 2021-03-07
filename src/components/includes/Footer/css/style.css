@@ -48,6 +48,9 @@
   align-items: center;
 }
 @media screen and (max-width: 900px) {
+  #footerSection .copyright {
+    padding: 10px 0;
+  }
   #footerSection .copyright span {
     margin-left: 0px;
   }
@@ -57,5 +60,8 @@
   .footer-p {
     font-size: 13px;
     line-height: 25px;
+  }
+  #footerSection .contact {
+    padding: 10px 0;
   }
 }
