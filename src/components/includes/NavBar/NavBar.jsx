@@ -18,6 +18,7 @@ import Upload from "../../screens/Upload/Upload";
 import Cart from "../../screens/Cart/Cart";
 import { useSelector, useDispatch } from "react-redux";
 import { carts } from "../../../store/productSlice";
+import FixtureDetailsPage from "../../screens/FixtureDetailsPage/FixtureDetailsPage";
 
 const NavBar = (props) => {
   const cartsNow = useSelector(carts);
@@ -85,20 +86,20 @@ const NavBar = (props) => {
             </li>
             <li class="item">
               <Link
-                to="/fixture"
+                to="/tournament"
                 className={`item-link ${
-                  window.location.pathname === "/fixture" && "bb"
+                  window.location.pathname === "/tournament" && "bb"
                 }`}
                 onClick={addBg}
               >
-                Fixtures
+                Tournament
               </Link>
             </li>
             <li class="cart">
               <Link to="/cart" className="item-link" onClick={addBg}>
                 <FontAwesomeIcon icon={faShoppingCart} color="#ffa700" />
                 <span class="badge rounded-pill bg-yellow top-right">
-                  {cartsNow.length }
+                  {cartsNow.length}
                 </span>
               </Link>
             </li>
@@ -114,9 +115,10 @@ const NavBar = (props) => {
         <Route component={Cart} path="/cart" />
         <Route component={Upload} path="/upload" />
         <Route component={PaymentPage} path="/pay" />
+        <Route component={FixtureDetailsPage} path="/tournament/:fixtureId" />
         <Route component={ProductDetailsPage} path="/store/:productId" />
         <Route component={StorePage} path="/store" />
-        <Route component={Fixture} path="/fixture" />
+        <Route component={Fixture} path="/tournament" />
         <Route component={AboutPage} path="/about" />
         <Route component={HomePage} path="/" />
       </Switch>

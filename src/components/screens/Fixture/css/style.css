@@ -6,32 +6,23 @@
 }
 #fixturePageSectionTwo .event-item {
   background-color: #ddd;
-  text-align: center;
+  height: 400px;
+  border-radius: 20px;
 }
-#fixturePageSectionTwo .event-item .head {
-  background-color: #130227;
+#fixturePageSectionTwo .event-item .image {
+  height: 220px;
+}
+#fixturePageSectionTwo .event-item .text {
+  padding: 20px;
+  background: #2e2447;
+  height: 100%;
   color: white;
 }
-#fixturePageSectionTwo .event-item .head h2 {
-  padding: 10px;
+#fixturePageSectionTwo .event-item .image img {
+  height: 100%;
+  width: 100%;
 }
-#fixturePageSectionTwo .event-item .vs {
-  padding: 50px;
-}
-#fixturePageSectionTwo .event-item .vs div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-#fixturePageSectionTwo .event-item .vs span {
-  font-size: 25px;
-  color: #df4b29;
-}
-#fixturePageSectionThree {
-  padding: 100px 200px;
-}
+
 #fixturePageSectionThree .new-event-item {
   display: flex;
   justify-content: space-between;
@@ -62,46 +53,34 @@
 #fixturePageSectionThree .event-item .vs img {
   height: 54px;
 }
+#fixturePageSectionTwo .event-item button {
+  font-size: 10px;
+}
 @media screen and (max-width: 900px) {
   #fixturePageSectionTwo {
     padding: 10px;
   }
-  #fixturePageSectionTwo .event-item h2 {
-    font-size: 20px;
+  #fixturePageSectionTwo .event-item {
+    height: auto;
+    border-radius: 10px;
   }
-  #fixturePageSectionTwo .event-item .vs {
-    padding: 5px;
+  #fixturePageSectionTwo .event-item .image {
+    height: 100px;
   }
-  #fixturePageSectionTwo .event-item .vs div {
-    padding: 2px;
-    margin-bottom: 2px;
-  }
-  #fixturePageSectionTwo .event-item .vs span {
-    font-size: 16px;
-  }
-  #fixturePageSectionTwo .event-item .vs img {
-    height: 40px;
-  }
-  #fixturePageSectionThree {
+  #fixturePageSectionTwo .event-item .text {
     padding: 10px;
   }
-  #fixturePageSectionThree .new-event-item {
-    padding: 10px;
+  #fixturePageSectionTwo .event-item .image img {
+    height: 100%;
+    width: 100%;
   }
-  #fixturePageSectionThree .new-event-item img {
-    height: 40px;
+  #fixturePageSectionTwo .event-item h3 {
+    font-size: 10px;
+    margin-bottom: 10px;
   }
-  #fixturePageSectionThree .new-event-item div {
-    margin-right: auto;
-    display: flex;
-    align-items: center;
-  }
-  #fixturePageSectionThree .new-event-item p {
-    margin: 0 2px;
+  #fixturePageSectionTwo .event-item span,
+  #fixturePageSectionTwo .event-item button {
     font-size: 10px;
   }
-  #fixturePageSectionThree .new-event-item span {
-    margin: 20px;
-    font-size: 15px;
-  }
 }
+

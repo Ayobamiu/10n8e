@@ -21,23 +21,60 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from "../../includes/Footer/Footer";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Spinner } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { loadfixtures, fixtures } from "../../../store/fixtureSlice";
 import { products, loadProducts } from "../../../store/productSlice";
 import { loadhighlights, highlights } from "../../../store/highlightSlice";
 import moment from "moment";
 
-const HomePage = () => {
+const HomePage = (props) => {
   const allProducts = useSelector(products);
   const allHighlights = useSelector(highlights);
+  const allFixtures = useSelector(fixtures);
   const dispatch = useDispatch();
   const [good, setGood] = useState(false);
   useEffect(() => {
     dispatch(loadProducts());
     dispatch(loadhighlights());
+    dispatch(loadfixtures());
   }, [good]);
   console.log(allHighlights);
+  const { buttonLabel, className } = props;
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
+
+  const externalCloseBtn = (
+    <button
+      className="close"
+      style={{ position: "absolute", top: "15px", right: "15px" }}
+      onClick={toggle}
+    >
+      &times;
+    </button>
+  );
+
   return (
-    <div className="homepage">
+    <div id="homepage">
+      <div>
+        <Modal
+          isOpen={modal}
+          toggle={toggle}
+          className={className}
+          external={externalCloseBtn}
+        >
+          <div
+            class="border loading h-400 hide-overflow player"
+            onClick={(e) => e.preventDefault()}
+          >
+            <ReactPlayer
+              height="100%"
+              width="100%"
+              url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+            />
+          </div>
+        </Modal>
+      </div>
       <div id="homepageSectionOne">
         <div
           id="carouselExampleIndicators"
@@ -119,21 +156,18 @@ const HomePage = () => {
         <div class="container">
           <h2 className="mb-50">Upcoming Events</h2>
           <div class="row g-2">
-            <div class="col-12">
-              <div class="border bg-light h-250 hide-overflow">
-                <img src={imagehomeone} alt="" className="w-100" />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="border bg-light h-315 hide-overflow">
-                <img src={imagehometwo} alt="" className="w-100" />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="border bg-light h-315 hide-overflow">
-                <img src={imagehomethree} alt="" className="w-100" />
-              </div>
-            </div>
+            {allFixtures.map((item) => (
+              <Link to={`/tournament/${item._id}`} class="col-6">
+                <div class="border bg-light h-315 hide-overflow">
+                  <img
+                    src={item.image}
+                    alt=""
+                    className="w-100"
+                    height="100%"
+                  />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
@@ -187,14 +221,56 @@ const HomePage = () => {
             data-bs-ride="carousel"
           >
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div className="d-block w-100 slide-item" alt="...">
-                  <div class="row g-2 justify-content-center">
-                    {allProducts.slice(0, 3).map((product) => (
-                      <div class="col-6 col-md-4">
-                        <Link to={`/store/${product._id}`}>
-                          <div class="kit-container  hide-overflow">
-                            {product.images[0].image ? (
+              {allProducts && allProducts.length > 0 ? (
+                <div class="carousel-item active">
+                  <div className="d-block w-100 slide-item" alt="...">
+                    <div class="row g-2 justify-content-center">
+                      {allProducts.slice(0, 3).map((product) => (
+                        <div class="col-6 col-md-4">
+                          <Link to={`/store/${product._id}`}>
+                            <div class="kit-container  hide-overflow">
+                              {product.images[0].image ? (
+                                <div className="kit-image">
+                                  <img
+                                    src={
+                                      product.images &&
+                                      product.images.length > 0
+                                        ? product.images[0].image
+                                        : noimage
+                                    }
+                                    alt=""
+                                    className="kit-image-img"
+                                  />
+                                </div>
+                              ) : (
+                                <div class="spinner-border" role="status">
+                                  <span class="visually-hidden">
+                                    Loading...
+                                  </span>
+                                </div>
+                              )}
+                              <h3>#{product.price}</h3>
+                              <p className="col-12 text-truncate">
+                                {product.title}
+                              </p>
+                            </div>
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <p>No products</p>
+              )}
+              {allProducts && allProducts.length > 3 && (
+                <div class="carousel-item">
+                  <div className="d-block w-100 slide-item" alt="...">
+                    <div class="row g-2 justify-content-center">
+                      {allProducts.slice(3, 6).map((product) => (
+                        <div class="col-6 col-md-4">
+                          <Link to={`/store/${product._id}`}>
+                            <div class="kit-container  hide-overflow">
                               <div className="kit-image">
                                 <img
                                   src={
@@ -206,51 +282,18 @@ const HomePage = () => {
                                   className="kit-image-img"
                                 />
                               </div>
-                            ) : (
-                              <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                              </div>
-                            )}
-                            <h3>#{product.price}</h3>
-                            <p className="col-12 text-truncate">
-                              {product.title}
-                            </p>
-                          </div>
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div className="d-block w-100 slide-item" alt="...">
-                  <div class="row g-2 justify-content-center">
-                    {allProducts.slice(3, 6).map((product) => (
-                      <div class="col-6 col-md-4">
-                        <Link to={`/store/${product._id}`}>
-                          <div class="kit-container  hide-overflow">
-                            <div className="kit-image">
-                              <img
-                                src={
-                                  product.images && product.images.length > 0
-                                    ? product.images[0].image
-                                    : noimage
-                                }
-                                alt=""
-                                className="kit-image-img"
-                              />
+                              <h3>#{product.price}</h3>
+                              <p className="col-12 text-truncate">
+                                {product.title}
+                              </p>
                             </div>
-                            <h3>#{product.price}</h3>
-                            <p className="col-12 text-truncate">
-                              {product.title}
-                            </p>
-                          </div>
-                        </Link>
-                      </div>
-                    ))}
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
             <button
               class="carousel-control-prev"
@@ -284,12 +327,16 @@ const HomePage = () => {
           <h2 className="mb-50">Live Now</h2>
           <div class="row ">
             <div class="col-12 ">
-              <div class="border loading h-400 hide-overflow">
+              <div
+                class="border loading h-400 hide-overflow player"
+                onClick={(e) => e.preventDefault()}
+              >
                 <ReactPlayer
                   height="100%"
                   width="100%"
                   url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
                 />
+                <div className="overlay" onClick={() => toggle()}></div>
               </div>
             </div>
           </div>
@@ -297,7 +344,7 @@ const HomePage = () => {
       </div>
       <div id="homepageSectionSeven">
         <div class="container">
-          <h2 className="">Our Parners</h2>
+          <h2 className="">Our Patners</h2>
           <div class="row">
             <div class="col-6 m-10 h-120 col-md-2">
               <img src={sponsor1} alt="" />

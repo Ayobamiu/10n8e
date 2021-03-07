@@ -92,9 +92,9 @@ const ProductDetailsPage = (props) => {
                     );
                     if (!existsInCart) {
                       dispatch(addCart(targetProduct._id, quantity));
-                      setMessage("Added to cart");
+                      setMessage("Added to temporary cart");
                     } else {
-                      setMessage("Already in cart");
+                      setMessage("Already in temporary cart");
                     }
                   }}
                 >

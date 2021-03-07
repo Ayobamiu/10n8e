@@ -169,6 +169,17 @@
 #homepageSectionSix {
   padding: 150px 300px;
 }
+#homepageSectionSix .player {
+  position: relative;
+}
+#homepageSectionSix .player .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
 #homepageSectionSeven {
   margin-bottom: 150px;
 }
@@ -180,14 +191,27 @@
 }
 @media screen and (max-width: 960px) {
   #homepageSectionSix {
-    padding: 15px 0px;
+    padding: 0px;
   }
   .h-400 {
     min-height: 50px;
-    height: auto;
+    height: auto !important;
+
     /* max-height: 315px; */
   }
   #homepageSectionSeven {
     margin-bottom: 10px;
+  }
+}
+.modal-dialog {
+  top: 50%;
+  transform: translateY(-50%) !important;
+}
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 80% !important;
+    margin: 1.75rem auto;
+    top: 50%;
+    transform: translateY(-50%) !important;
   }
 }
