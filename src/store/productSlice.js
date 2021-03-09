@@ -158,3 +158,4 @@ export const removeproduct = (id) =>
 export const carts = (state) => state.app.products.cart.list;
 export const products = (state) => state.app.products.list;
 export const product = (state) => state.app.products.product;
+export const loadingProduct = (state) => state.app.products.loading;

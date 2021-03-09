@@ -1,16 +1,26 @@
 #fixture #sectionOne {
   background-image: url("../../../../assets/img/fixtureImage1.png");
 }
+
+#fixture .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #495057;
+  background-color: #fff;
+  border-color: #082a52 #082a52 #fff;
+}
 #fixturePageSectionTwo {
   padding: 100px 200px;
 }
 #fixturePageSectionTwo .event-item {
   background-color: #ddd;
-  height: 400px;
+  height: 350px;
   border-radius: 20px;
 }
 #fixturePageSectionTwo .event-item .image {
   height: 220px;
+  /* background-image: url(); */
+  display: flex;
+  justify-content: center;
 }
 #fixturePageSectionTwo .event-item .text {
   padding: 20px;
@@ -18,9 +28,25 @@
   height: 100%;
   color: white;
 }
+#fixturePageSectionTwo .event-item .text h3 {
+  font-family: Mulish;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0em;
+}
+#fixturePageSectionTwo .event-item .text span {
+  font-family: Mulish;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+  color: #ffffff80;
+}
 #fixturePageSectionTwo .event-item .image img {
   height: 100%;
-  width: 100%;
 }
 
 #fixturePageSectionThree .new-event-item {
@@ -70,17 +96,16 @@
   #fixturePageSectionTwo .event-item .text {
     padding: 10px;
   }
-  #fixturePageSectionTwo .event-item .image img {
-    height: 100%;
-    width: 100%;
-  }
-  #fixturePageSectionTwo .event-item h3 {
+
+  #fixturePageSectionTwo .event-item .text h3 {
     font-size: 10px;
-    margin-bottom: 10px;
+    line-height: 13px;
   }
-  #fixturePageSectionTwo .event-item span,
+  #fixturePageSectionTwo .event-item .text span {
+    font-size: 8px;
+    line-height: 10px;
+  }
   #fixturePageSectionTwo .event-item button {
-    font-size: 10px;
+    font-size: 8px;
   }
 }
-

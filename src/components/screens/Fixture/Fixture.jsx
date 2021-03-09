@@ -34,7 +34,7 @@ const Fixture = () => {
             </div>
             <div className="col-6">
               <div className="images"></div>
-            </div>
+            </div> 
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@ const Fixture = () => {
                         </span>
                       </div>
                       <div className="col-md-4 col-12">
-                        <button className="btn btn-primary rounded-pill">
+                        <button className="btn btn-lg btn-primary rounded-pill">
                           {moment(fixture.time).format("LT")}{" "}
                         </button>
                       </div>

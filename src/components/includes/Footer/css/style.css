@@ -43,6 +43,7 @@
   font-size: 15px;
   line-height: 30px;
   font-weight: 400;
+  margin-top: 10px;
 }
 .first-row {
   align-items: center;
@@ -58,10 +59,15 @@
     font-size: 17px;
   }
   .footer-p {
-    font-size: 13px;
-    line-height: 25px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 100;
+    margin-top: 10px;
   }
   #footerSection .contact {
     padding: 10px 0;
+  }
+  .mb-20 {
+    margin-bottom: 10px;
   }
 }

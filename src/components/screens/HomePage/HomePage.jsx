@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import slideone from "../../../assets/img/slideone.png";
+import Artboard from "../../../assets/img/Artboard.png";
 import imagehomeone from "../../../assets/img/imagehomeone.png";
 import imagehometwo from "../../../assets/img/imagehometwo.png";
 import imagehomethree from "../../../assets/img/imagehomethree.png";
@@ -22,15 +22,32 @@ import Footer from "../../includes/Footer/Footer";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { loadfixtures, fixtures } from "../../../store/fixtureSlice";
-import { products, loadProducts } from "../../../store/productSlice";
-import { loadhighlights, highlights } from "../../../store/highlightSlice";
+import {
+  loadfixtures,
+  fixtures,
+  loadingFixtures,
+  loadfixture,
+} from "../../../store/fixtureSlice";
+import {
+  products,
+  loadProducts,
+  loadingProduct,
+} from "../../../store/productSlice";
+import {
+  loadhighlights,
+  highlights,
+  loadhighlight,
+  loadingHighlight,
+} from "../../../store/highlightSlice";
 import moment from "moment";
 
 const HomePage = (props) => {
   const allProducts = useSelector(products);
   const allHighlights = useSelector(highlights);
   const allFixtures = useSelector(fixtures);
+  const loadingFixturesValue = useSelector(loadingFixtures);
+  const loadingProductsValue = useSelector(loadingProduct);
+  const loadingHighlightValue = useSelector(loadingHighlight);
   const dispatch = useDispatch();
   const [good, setGood] = useState(false);
   useEffect(() => {
@@ -38,7 +55,7 @@ const HomePage = (props) => {
     dispatch(loadhighlights());
     dispatch(loadfixtures());
   }, [good]);
-  console.log(allHighlights);
+  console.log(loadingFixturesValue);
   const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
 
@@ -106,21 +123,21 @@ const HomePage = (props) => {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src={slideone}
+                src={Artboard}
                 className="d-block w-100 slide-image"
                 alt="..."
               />
             </div>
             <div className="carousel-item">
               <img
-                src={slideone}
+                src={Artboard}
                 className="d-block w-100 slide-image"
                 alt="..."
               />
             </div>
             <div className="carousel-item">
               <img
-                src={slideone}
+                src={Artboard}
                 className="d-block w-100 slide-image"
                 alt="..."
               />
@@ -152,6 +169,16 @@ const HomePage = (props) => {
           </button>
         </div>
       </div>
+      <div id="homePageSectionOneText">
+        <div className="container">
+          <h1>What is 10N8E?</h1>
+          <p>
+            10N8E is an African Esports organization with mission to support the
+            continent, the gamers, athletes, creators and fans to provide a
+            truly world class Esports industry on the continent.{" "}
+          </p>
+        </div>
+      </div>
       <div id="homepageSectionTwo">
         <div class="container">
           <h2 className="mb-20">Upcoming Events</h2>
@@ -159,15 +186,15 @@ const HomePage = (props) => {
             {allFixtures.map((item) => (
               <Link to={`/tournament/${item._id}`} class="col-6">
                 <div class="border bg-light h-315 hide-overflow">
-                  <img
-                    src={item.image}
-                    alt=""
-                    className="w-100"
-                    height="100%"
-                  />
+                  <img src={item.image} alt="" />
                 </div>
               </Link>
             ))}
+            {loadingFixturesValue && (
+              <div class="spinner-grow" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -190,6 +217,7 @@ const HomePage = (props) => {
           </div>
         </div>
       </div>
+
       <div id="homepageSectionFour">
         <div class="container">
           <h2 className="mb-20">Highlights</h2>
@@ -200,15 +228,20 @@ const HomePage = (props) => {
                   <div className="player-box">
                     <ReactPlayer height="100%" width="100%" url={item.link} />
                   </div>
-                  <p className="col-12 text-truncate">
+                  <p className="col-12 text-truncate m-0">
                     <b>{item.title}</b>
                   </p>
-                  <p className="text-muted">
+                  <p className="text-muted m-0">
                     {moment(item.createdAt).format("MMM Do YY")}
                   </p>
                 </div>
               </div>
             ))}
+            {loadingHighlightValue && (
+              <div class="spinner-grow" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -249,8 +282,8 @@ const HomePage = (props) => {
                                   </span>
                                 </div>
                               )}
-                              <h3>#{product.price}</h3>
-                              <p className="col-12 text-truncate">
+                              <h3 className="m-0">#{product.price}</h3>
+                              <p className="col-12 text-truncate m-0">
                                 {product.title}
                               </p>
                             </div>

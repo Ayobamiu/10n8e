@@ -4,15 +4,15 @@ import { faBars, faCoffee } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import logo from "../../../assets/img/10n80logo.png";
-import youtubeIcon from "../../../assets/img/youtubeIcon.png";
+import instagramIcon from "../../../assets/img/instagramIcon.png";
 import twitterIcon from "../../../assets/img/twitterIcon.png";
-import facebookIcon from "../../../assets/img/facebookIcon.png";
+import twtchIcon from "../../../assets/img/twtchIcon.png";
 const Footer = () => {
   return (
     <div id="footerSection">
       <div class="container">
         <div className="contact h-250">
-          <div className="row first-row">
+          <div className="row first-row"> 
             <div className="col-md-5 col-12 mb-20">
               <h5>Contact Us</h5>
               <div className="row">
@@ -21,7 +21,7 @@ const Footer = () => {
                 <div className="col-6 footer-p">info@10N8E.gg</div>
               </div>
             </div>
-            <div className="col-md-4 col-12 mb-20">
+            <div className="col-md-4 col-12 ">
               {/* <h5>Address</h5>
               <div className="row">
                 <div className="col-12 footer-p">10N8E  Pvt. Ltd 1-A,</div>
@@ -32,13 +32,13 @@ const Footer = () => {
             </div>
             <div className="col-md-3 col-12 mb-20">
               <a href="https://www.twitch.tv/10n8eplay">
-                <img src={youtubeIcon} alt="" className="footer-icon" />
+                <img src={twtchIcon} alt="" className="footer-icon" />
               </a>
               <a href="https://mobile.twitter.com/10N8EPLAY">
                 <img src={twitterIcon} alt="" className="footer-icon" />
               </a>
               <a href="https://www.instagram.com/10n8eplay/">
-                <img src={facebookIcon} alt="" className="footer-icon" />
+                <img src={instagramIcon} alt="" className="footer-icon" />
               </a>
             </div>
           </div>

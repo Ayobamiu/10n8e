@@ -14,6 +14,10 @@
   margin: 0;
   width: 100%;
 }
+#test-toggle .store,
+#test-toggle .cart {
+  display: none;
+}
 .test-toggle li {
   display: block;
   margin: 10px 20px;

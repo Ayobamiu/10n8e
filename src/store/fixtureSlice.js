@@ -5,7 +5,7 @@ import memoize from "lodash.memoize";
 
 const slice = createSlice({
   name: "fixtures",
-  initialState: { list: [], fixture: {} },
+  initialState: { list: [], loading: false, fixture: { loading: false } },
   reducers: {
     fixturesRequested: (fixtures, action) => {
       fixtures.loading = true;
@@ -18,26 +18,26 @@ const slice = createSlice({
       fixtures.loading = false;
     },
     fixtureRequested: (fixtures, action) => {
-      fixtures.loading = true;
+      fixtures.fixture.loading = true;
     },
     fixtureReceived: (fixtures, action) => {
       fixtures.fixture = action.payload;
-      fixtures.loading = false;
+      fixtures.fixture.loading = false;
     },
     fixtureRequestFailed: (fixtures, action) => {
-      fixtures.loading = false;
+      fixtures.fixture.loading = false;
     },
     fixtureAddStart: (fixtures, action) => {
-      fixtures.loading = true;
+      // fixtures.loading = true;
       fixtures.status = "loading";
     },
     fixtureAdded: (fixtures, action) => {
       fixtures.list.push(action.payload);
-      fixtures.loading = false;
+      // fixtures.loading = false;
       fixtures.status = "Added successfully";
     },
     fixtureAddFailed: (fixtures, action) => {
-      fixtures.loading = false;
+      // fixtures.loading = false;
       fixtures.status = "Failed";
     },
     fixtureRemoved: (fixtures, action) => {
@@ -108,3 +108,5 @@ export const removefixture = (id) =>
 
 export const fixtures = (state) => state.app.fixtures.list;
 export const fixture = (state) => state.app.fixtures.fixture;
+export const loadingFixtures = (state) => state.app.fixtures.loading;
+export const loadingFixture = (state) => state.app.fixtures.fixture.loading;

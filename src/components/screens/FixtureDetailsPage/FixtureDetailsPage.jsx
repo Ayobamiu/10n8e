@@ -77,15 +77,19 @@ const FixtureDetailsPage = (props) => {
                 <div className="row g-3">
                   {targetFixture.participants &&
                     targetFixture.participants.map((item) => (
-                      <div className="col-4 image">
-                        <img src={item.image} alt="" />
+                      <div className="col-4 ">
+                        <div className="image">
+                          <img src={item.image} alt="" />
+                        </div>
                       </div>
                     ))}
                 </div>
               </div>
             </TabPane>
             <TabPane tabId="3">
-              <div className="details">{targetFixture.rules}</div>
+              <div className="details">
+                <p>{targetFixture.rules}</p>
+              </div>
             </TabPane>
           </TabContent>
         </div>

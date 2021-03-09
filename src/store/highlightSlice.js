@@ -108,3 +108,4 @@ export const removehighlight = (id) =>
 
 export const highlights = (state) => state.app.highlights.list;
 export const highlight = (state) => state.app.highlights.highlight;
+export const loadingHighlight = (state) => state.app.highlights.loading;

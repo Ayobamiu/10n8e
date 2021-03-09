@@ -3,7 +3,7 @@
   width: 100%;
 }
 .myVid {
-    height: 600px;
+  height: 600px;
   width: 100%;
   margin: auto !important   ;
 }
@@ -19,6 +19,24 @@
   width: 70%;
   border-top-right-radius: 100px;
 }
+#aboutPageSectionTwo .grey h1 {
+  font-family: Mulish;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: 0em;
+  /* text-align: left; */
+}
+#aboutPageSectionTwo .grey p {
+  font-family: Mulish;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 31px;
+  letter-spacing: 0em;
+  /* text-align: left; */
+}
 #aboutPageSectionTwo .purple {
   position: absolute;
   background: #130227;
@@ -26,13 +44,14 @@
   height: 430px;
   width: 300px;
   bottom: 100px;
+  left: 10%;
   /* text-align: center; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 #aboutPageSectionTwo .purple img {
-  left: 50px;
+  /* left: 2  0px; */
   position: relative;
 }
 @media screen and (max-width: 900px) {
@@ -46,7 +65,7 @@
   #aboutPageSectionTwo .grey {
     background-color: #fff;
     width: 100%;
-    padding: 10px;
+    padding: 30px;
     padding-bottom: 10px;
     border-top-right-radius: unset;
     text-align: center;
@@ -58,12 +77,87 @@
     width: 150px;
     bottom: unset;
     margin: 20px auto;
+    left: unset;
   }
 
   #aboutPageSectionTwo .col-md-5 {
     order: 2;
   }
   #aboutPageSectionTwo .purple img {
-    left: 25px;
+    left: unset;
+  }
+  #aboutPageSectionTwo .grey h1 {
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 20px;
+  }
+  #aboutPageSectionTwo .grey p {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+#aboutWhatWeDoSection {
+  text-align: center;
+  background: #130227;
+  color: white;
+  padding: 100px;
+}
+#aboutWhatWeDoSection h1 {
+  font-family: Mulish;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: 0em;
+  margin-bottom: 50px;
+}
+#aboutWhatWeDoSection p {
+  font-family: Mulish;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 34px;
+  letter-spacing: 0em;
+  text-align: center;
+  padding: 10px 40px;
+}
+#aboutFollowSection {
+  padding: 100px 0;
+  margin: auto;
+  width: 40%;
+  text-align: center;
+}
+#aboutFollowSection h1 {
+  text-align: center;
+}
+#aboutFollowSection img {
+  max-width: 100%;
+}
+@media screen and (max-width: 900px) {
+  #aboutWhatWeDoSection {
+    padding: 30px 10px;
+  }
+  #aboutWhatWeDoSection h1 {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+  #aboutWhatWeDoSection p {
+    font-family: Mulish;
+    font-size: 12px;
+    line-height: 20px;
+    padding: 10px;
+  }
+
+  #aboutFollowSection {
+    padding: 100px 30px;
+    width: 100%;
+  }
+  #aboutFollowSection h1 {
+    text-align: center;
+    font-size: 20px;
+  }
+  #aboutFollowSection img {
+    max-width: 100%;
   }
 }
