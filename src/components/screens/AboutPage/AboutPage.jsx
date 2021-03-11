@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/style.css";
-import vid from "../../../assets/vid/vid.MP4";
+import vid from "../../../assets/vid/vid.mp4";
 import trophy from "../../../assets/img/trophy.png";
 import Footer from "../../includes/Footer/Footer";
 import whiteTwitch from "../../../assets/img/whiteTwitch.png";
