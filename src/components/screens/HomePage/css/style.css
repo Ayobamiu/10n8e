@@ -124,9 +124,9 @@
     /* min-height: 200px; */
   }
   #homepageSectionTwo img {
-  max-width: unset;
-  height: 100%;
-}
+    max-width: unset;
+    height: 100%;
+  }
   #homepageSectionThree {
     padding: 20px 0;
     /* min-height: 200px; */
@@ -252,6 +252,10 @@
 }
 #homepageSectionSeven .row {
   align-items: center;
+  justify-content: center;
+}
+#homepageSectionSeven img {
+  max-width: 100%;
 }
 .loading {
   animation: loadingBlock 1s infinite linear;

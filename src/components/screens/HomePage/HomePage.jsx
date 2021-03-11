@@ -7,11 +7,11 @@ import imagehomethree from "../../../assets/img/imagehomethree.png";
 import kit1 from "../../../assets/img/kit1.png";
 import kit2 from "../../../assets/img/kit2.png";
 import kit3 from "../../../assets/img/kit3.png";
-import sponsor1 from "../../../assets/img/sponsor1.png";
-import sponsor2 from "../../../assets/img/sponsor2.png";
-import sponsor3 from "../../../assets/img/sponsor3.png";
-import sponsor4 from "../../../assets/img/sponsor4.png";
-import sponsor5 from "../../../assets/img/sponsor5.png";
+import sponsor1 from "../../../assets/img/Athlane.png";
+import sponsor2 from "../../../assets/img/Keexs.png";
+import sponsor3 from "../../../assets/img/Los.png";
+import sponsor4 from "../../../assets/img/SC.png";
+import sponsor5 from "../../../assets/img/Spectaplay.png";
 import sponsor6 from "../../../assets/img/sponsor6.png";
 import noimage from "../../../assets/img/noimage.jpg";
 
@@ -378,25 +378,25 @@ const HomePage = (props) => {
       <div id="homepageSectionSeven">
         <div class="container mb-20">
           <h2 className="">Our Patners</h2>
-          <div class="row">
+          <div class="row ">
             <div class="col-6 m-10 h-120 col-md-2">
-              <img src={sponsor1} alt="" />
+              <img height="40px" src={sponsor1} alt="" />
             </div>
             <div class="col-6 m-10 h-120 col-md-2">
-              <img src={sponsor2} alt="" />
+              <img height="40px" src={sponsor2} alt="" />
             </div>
             <div class="col-6 m-10 h-120 col-md-2">
-              <img src={sponsor3} alt="" />
+              <img height="40px" src={sponsor3} alt="" />
             </div>
             <div class="col-6 m-10 h-120 col-md-2">
-              <img src={sponsor4} alt="" />
+              <img height="40px" src={sponsor4} alt="" />
             </div>
             <div class="col-6 m-10 h-120 col-md-2">
-              <img src={sponsor5} alt="" />
+              <img height="40px" src={sponsor5} alt="" />
             </div>
-            <div class="col-6 m-10 h-120 col-md-2">
-              <img src={sponsor6} alt="" />
-            </div>
+            {/* <div class="col-6 m-10 h-120 col-md-2">
+              <img height="40px" src={sponsor6} alt="" />
+            </div> */}
           </div>
         </div>
       </div>
