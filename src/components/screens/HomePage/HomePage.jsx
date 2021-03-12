@@ -58,14 +58,22 @@ const HomePage = (props) => {
   console.log(loadingFixturesValue);
   const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
+  const [modal2, setModal2] = useState(false);
 
   const toggle = () => setModal(!modal);
+  const toggle2 = () => setModal2(!modal2);
+  const [modalVid, setModalVid] = useState("");
 
   const externalCloseBtn = (
     <button
       className="close"
       style={{ position: "absolute", top: "15px", right: "15px" }}
-      onClick={toggle}
+      onClick={() => {
+        // toggle();
+        setModal(false)
+        setModal2(false)
+        // toggle2();
+      }}
     >
       &times;
     </button>
@@ -89,6 +97,21 @@ const HomePage = (props) => {
               width="100%"
               url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
             />
+          </div>
+        </Modal>
+      </div>
+      <div>
+        <Modal
+          isOpen={modal2}
+          toggle={toggle2}
+          className={className}
+          external={externalCloseBtn}
+        >
+          <div
+            class="border loading h-400 hide-overflow player"
+            onClick={(e) => e.preventDefault()}
+          >
+            <ReactPlayer height="100%" width="100%" url={modalVid} />
           </div>
         </Modal>
       </div>
@@ -227,6 +250,13 @@ const HomePage = (props) => {
                 <div class=" h-332 hide-overflow player-item">
                   <div className="player-box">
                     <ReactPlayer height="100%" width="100%" url={item.link} />
+                    <div
+                      className="overlay"
+                      onClick={() => {
+                        toggle2();
+                        setModalVid(item.link);
+                      }}
+                    ></div>
                   </div>
                   <p className="col-12 text-truncate m-0">
                     <b>{item.title}</b>

@@ -98,6 +98,17 @@
   /* background-color: rgba(0, 0, 0, 0.068); */
   animation: loadingBlock 1s infinite linear;
 }
+ .player-box {
+  position: relative;
+}
+ .player-box .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
 
 @media screen and (max-width: 960px) {
   #homePageSectionOneText {
@@ -253,9 +264,15 @@
 #homepageSectionSeven .row {
   align-items: center;
   justify-content: center;
+  text-align: center;
+}
+#homepageSectionSeven .row .col-6{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 #homepageSectionSeven img {
-  max-width: 100%;
+  max-width: 100px;
 }
 .loading {
   animation: loadingBlock 1s infinite linear;
