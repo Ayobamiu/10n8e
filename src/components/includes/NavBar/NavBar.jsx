@@ -50,7 +50,7 @@ const NavBar = (props) => {
                 <img src={logo} alt="" />
               </Link>
             </li>
-            <li class="item">
+            {/* <li class="item">
               <Link
                 to="/"
                 className={`item-link ${
@@ -107,7 +107,7 @@ const NavBar = (props) => {
               <Link to="#">
                 <FontAwesomeIcon icon={faBars} />
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

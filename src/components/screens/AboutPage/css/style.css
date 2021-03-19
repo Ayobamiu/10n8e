@@ -100,7 +100,7 @@
   text-align: center;
   background: #130227;
   color: white;
-  padding: 100px;
+  padding: 120px 150px;
 }
 #aboutWhatWeDoSection h1 {
   font-family: Mulish;
@@ -109,7 +109,10 @@
   font-weight: 700;
   line-height: 50px;
   letter-spacing: 0em;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
+}
+#aboutWhatWeDoSection image {
+  margin-bottom: 25px;
 }
 #aboutWhatWeDoSection p {
   font-family: Mulish;

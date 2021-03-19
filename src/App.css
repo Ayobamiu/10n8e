@@ -54,3 +54,11 @@ h2 {
 .cursor-pointer {
   cursor: pointer;
 }
+.mt-50-20 {
+  margin-top: 50px;
+}
+@media screen and (max-width: 900px) {
+  .mt-50-20 {
+    margin-top: 20px;
+  }
+}

@@ -4,9 +4,9 @@ import Artboard from "../../../assets/img/Artboard.png";
 import imagehomeone from "../../../assets/img/imagehomeone.png";
 import imagehometwo from "../../../assets/img/imagehometwo.png";
 import imagehomethree from "../../../assets/img/imagehomethree.png";
-import kit1 from "../../../assets/img/kit1.png";
-import kit2 from "../../../assets/img/kit2.png";
-import kit3 from "../../../assets/img/kit3.png";
+import fixture1 from "../../../assets/img/fixture1.png";
+import fixture2 from "../../../assets/img/fixture2.png";
+import fixture3 from "../../../assets/img/fixture3.png";
 import sponsor1 from "../../../assets/img/Athlane.png";
 import sponsor2 from "../../../assets/img/Keexs.png";
 import sponsor3 from "../../../assets/img/Los.png";
@@ -14,6 +14,15 @@ import sponsor4 from "../../../assets/img/SC.png";
 import sponsor5 from "../../../assets/img/Spectaplay.png";
 import sponsor6 from "../../../assets/img/sponsor6.png";
 import noimage from "../../../assets/img/noimage.jpg";
+import whatwedothree from "../../../assets/img/whatwedothree.png";
+import whatwedotwo from "../../../assets/img/whatwedotwo.png";
+import whatwedoone from "../../../assets/img/whatwedoone.png";
+import naija from "../../../assets/img/naija.png";
+import ghana from "../../../assets/img/ghana.png";
+import one from "../../../assets/img/one.jpg";
+import three from "../../../assets/img/three.jpg";
+// import four from "../../../assets/img/four.png";
+// import five from "../../../assets/img/five.png";
 
 import logo from "../../../assets/img/10n80logo.png";
 import "./css/style.css";
@@ -70,8 +79,8 @@ const HomePage = (props) => {
       style={{ position: "absolute", top: "15px", right: "15px" }}
       onClick={() => {
         // toggle();
-        setModal(false)
-        setModal2(false)
+        setModal(false);
+        setModal2(false);
         // toggle2();
       }}
     >
@@ -121,49 +130,24 @@ const HomePage = (props) => {
           className="carousel slide"
           data-bs-ride="carousel"
         >
-          <div className="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="0"
-              className="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleIndicators"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
-          </div>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img
-                src={Artboard}
-                className="d-block w-100 slide-image"
-                alt="..."
-              />
+              <Link to="/tournament/60440987ede97a00153d77e1">
+                <img
+                  src={one}
+                  className="d-block w-100 slide-image"
+                  alt="..."
+                />
+              </Link>
             </div>
             <div className="carousel-item">
-              <img
-                src={Artboard}
-                className="d-block w-100 slide-image"
-                alt="..."
-              />
-            </div>
-            <div className="carousel-item">
-              <img
-                src={Artboard}
-                className="d-block w-100 slide-image"
-                alt="..."
-              />
+              <Link to="/tournament/60440987ede97a00153d77e1">
+                <img
+                  src={three}
+                  className="d-block w-100 slide-image"
+                  alt="..."
+                />
+              </Link>
             </div>
           </div>
           <button
@@ -198,26 +182,78 @@ const HomePage = (props) => {
           <p>
             10N8E is an African Esports organization with mission to support the
             continent, the gamers, athletes, creators and fans to provide a
-            truly world class Esports industry on the continent.{" "}
+            truly world class industry. 10N8E is passionate about the growth of
+            Esports and ensuring Africa’s representation and contribution to the
+            industry growth. SpectaPLAY (the Parent Company of 10N8E) mission is
+            to bring PLAY to the continent. 10N8E is uniquely positioned to
+            support the growing gamers, creators, fans and ambassadors across
+            the continent with its domain knowledge and relationships,
           </p>
         </div>
       </div>
+
+      <div id="aboutWhatWeDoSection">
+        <div className="container">
+          <h1>What we do</h1>
+          <div className="row justify-content-between">
+            <div className="col-md-4 col-12">
+              <img src={whatwedoone} alt="" />
+              <p>
+                Esports offline and online tournaments with tailored approaches
+                for the African continent.
+              </p>
+            </div>
+            <div className="col-md-4 col-12">
+              <img src={whatwedotwo} alt="" />
+
+              <p>
+                Live Esports studio and cutting edge content production and fan
+                engagement.
+              </p>
+            </div>
+            <div className="col-md-4 col-12">
+              <img src={whatwedothree} alt="" />
+
+              <p>
+                Endorsement and talent marketing for African gamers, content
+                creators and fans.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div id="homepageSectionTwo">
         <div class="container">
           <h2 className="mb-20">Upcoming Events</h2>
           <div class="row g-2">
-            {allFixtures.map((item) => (
-              <Link to={`/tournament/${item._id}`} class="col-6">
+            <Link to="/tournament/60440987ede97a00153d77e1" class="col-4">
+              <div class="border bg-light h-228  hide-overflow">
+                <img className="w-100" src={naija} alt="" />
+              </div>
+            </Link>
+            <Link to="/tournament/60440987ede97a00153d77e1" class="col-4">
+              <div class="border bg-light h-228  hide-overflow">
+                <img className="w-100" src={ghana} alt="" />
+              </div>
+            </Link>
+            <Link to="/tournament/60440987ede97a00153d77e1" class="col-4">
+              <div class="border bg-light h-228  hide-overflow">
+                <img className="w-100" src={naija} alt="" />
+              </div>
+            </Link>
+            {/* {allFixtures.map((item) => (
+              <Link to={`/tournament/${item._id}`} class="col-4">
                 <div class="border bg-light h-315 hide-overflow">
                   <img src={item.image} alt="" />
                 </div>
               </Link>
-            ))}
-            {loadingFixturesValue && (
+            ))} */}
+            {/* {loadingFixturesValue && (
               <div class="spinner-grow" role="status">
                 <span class="visually-hidden">Loading...</span>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
@@ -407,22 +443,21 @@ const HomePage = (props) => {
       </div>
       <div id="homepageSectionSeven">
         <div class="container mb-20">
-          <h2 className="">Our Patners</h2>
           <div class="row ">
             <div class="col-6 m-10 h-120 col-md-2">
-              <img height="40px" src={sponsor1} alt="" />
+              <img className="sponsor-icon" src={sponsor1} alt="" />
             </div>
             <div class="col-6 m-10 h-120 col-md-2">
-              <img height="40px" src={sponsor2} alt="" />
+              <img className="sponsor-icon" src={sponsor2} alt="" />
             </div>
             <div class="col-6 m-10 h-120 col-md-2">
-              <img height="40px" src={sponsor3} alt="" />
+              <img className="sponsor-icon" src={sponsor3} alt="" />
             </div>
             <div class="col-6 m-10 h-120 col-md-2">
-              <img height="40px" src={sponsor4} alt="" />
+              <img className="sponsor-icon" src={sponsor4} alt="" />
             </div>
             <div class="col-6 m-10 h-120 col-md-2">
-              <img height="40px" src={sponsor5} alt="" />
+              <img className="sponsor-icon" src={sponsor5} alt="" />
             </div>
             {/* <div class="col-6 m-10 h-120 col-md-2">
               <img height="40px" src={sponsor6} alt="" />
