@@ -327,10 +327,14 @@
     /* transform: translateY(-50%) !important; */
   }
 }
+.sponsor-icon {
+  /* height: 50px; */
+  width: 70px;
+}
 @media screen and (max-width: 900px) {
   .sponsor-icon {
     /* height: 50%; */
-    width: 50%;
+    width: 50px;
   }
 }
 .hide {

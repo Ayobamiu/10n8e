@@ -20,9 +20,11 @@ import whatwedoone from "../../../assets/img/whatwedoone.png";
 import naija from "../../../assets/img/naija.png";
 import ghana from "../../../assets/img/ghana.png";
 import one from "../../../assets/img/one.jpg";
+import tournamentthree from "../../../assets/img/tournamentthree.png";
 import three from "../../../assets/img/three.jpg";
 // import four from "../../../assets/img/four.png";
 // import five from "../../../assets/img/five.png";
+import vid from "../../../assets/vid/vid.mp4";
 
 import logo from "../../../assets/img/10n80logo.png";
 import "./css/style.css";
@@ -143,9 +145,30 @@ const HomePage = (props) => {
             <div className="carousel-item">
               <Link to="/tournament/60440987ede97a00153d77e1">
                 <img
+                  src={tournamentthree}
+                  className="d-block w-100 slide-image"
+                  alt="..."
+                />
+              </Link>
+            </div>
+            <div className="carousel-item">
+              <Link to="/tournament/60440987ede97a00153d77e1">
+                <img
                   src={three}
                   className="d-block w-100 slide-image"
                   alt="..."
+                />
+              </Link>
+            </div>
+            <div className="carousel-item">
+              <Link to="/tournament/60440987ede97a00153d77e1">
+                <ReactPlayer
+                  height="100%"
+                  width="100%"
+                  url={vid}
+                  playing={true}
+                  loop={true}
+                  muted={true}
                 />
               </Link>
             </div>

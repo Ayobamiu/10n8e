@@ -5,8 +5,12 @@ import { loadfixture, fixture } from "../../../store/fixtureSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import classnames from "classnames";
-import bignaija from "../../../assets/img/bignaija.png";
+import bignaija1 from "../../../assets/img/bignaija1.png";
 import participant1 from "../../../assets/img/participant1.png";
+import emptyframe from "../../../assets/img/emptyframe.png";
+import ReleaseForm from "../../../assets/docs/ReleaseForm.pdf";
+import Consent from "../../../assets/docs/Consent.pdf";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const FixtureDetailsPage = (props) => {
   const targetFixture = useSelector(fixture);
@@ -27,7 +31,7 @@ const FixtureDetailsPage = (props) => {
   return (
     <div id="fixtureDetails">
       <div id="fixtureDetailsSectionOne">
-        <img src={bignaija} alt="" />
+        <img src={bignaija1} alt="" />
       </div>
       <div id="fixtureDetailsSectionTwo" className="hide">
         <div className="container">
@@ -113,7 +117,7 @@ const FixtureDetailsPage = (props) => {
       <div className="orangebg">
         <div id="homePageSectionOneText">
           <div className="overview">
-            <h1>2021 FIFA Africa eSeries</h1>
+            <h1>2021 FIFA AFRICA ESERIES</h1>
             <h4>
               <b>Round Games – March 26th – 27th</b>
             </h4>
@@ -125,36 +129,88 @@ const FixtureDetailsPage = (props) => {
               competitions! Think you're up for the challenge? Sign up today and
               take-home part of that $500 prize pool!
             </p>
-            <h1 className='mt-50-20'>Rules</h1>
+            <h1 className="mt-50-20 mb-0">Rules</h1>
             <ul>
               <li>
                 <p>This tournament is only for participants from Nigeria</p>
               </li>
               <li>
-                <p>Each member must be xxxxx ?</p>
+                <p>
+                  Players below 18 (16 is the limit) must have a parent complete
+                  the consent form
+                </p>
               </li>
               <li>
-                <p>Registration closes on the 19th of March 2021.</p>
+                <p>Play must be in FIFA Ultimate Team mode</p>
+              </li>
+              <li>
+                <p>
+                  Send an email to info@10N8E.gg with your proof of Nigeria
+                  residency
+                </p>
+              </li>
+              <li>
+                <p>
+                  Include your WhatsApp number and a picture of your FIFA
+                  Ultimate team to the{" "}
+                </p>
+              </li>
+              <li>
+                <p>
+                  Players 16 and below must have a parent complete the consnet
+                  form
+                </p>
+              </li>
+              <li>
+                <p>Registration closes on the 23rd of March 2021.</p>
+              </li>
+              <li>
+                <p>Watch the Registration video</p>
               </li>
             </ul>
 
-            <button className="btn btn-primary mt-50-20">
-              Register
-            </button>
+            <h1 className="mt-50-20 mb-0">Links</h1>
+            <ul>
+              <li>
+                <p>
+                  <a href={ReleaseForm} download>
+                    Release form - Document{" "}
+                  </a>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <a href={Consent} download>
+                    Parental Consent - Document
+                  </a>
+                </p>
+              </li>
+            </ul>
+
+            <h1 className="mt-50-20 mb-0">Admins</h1>
+
+            <p>Email - info@10N8E.gg</p>
+
+            <button className="btn btn-primary mt-50-20">Register</button>
           </div>
         </div>
       </div>
       <div id="fixtureDetailsSectionTwo">
         <h1 style={{ marginBottom: "50px" }}>Participants</h1>
         <div className="row g-3 justify-content-between">
-          {targetFixture.participants &&
+          <div className="col-4 ">
+            <div className="image">
+              <img src={emptyframe} alt="" />
+            </div>
+          </div>
+          {/* {targetFixture.participants &&
             targetFixture.participants.map((item) => (
               <div className="col-4 ">
                 <div className="image">
                   <img src={item.image} alt="" />
                 </div>
               </div>
-            ))}
+            ))} */}
         </div>
       </div>
       <Footer />

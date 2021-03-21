@@ -120,10 +120,16 @@
 #fixtureDetailsSectionTwo a {
   color: #000;
 }
+.overview h1 {
+  /* margin-bottom: 0 !important; */
+}
 .overview ul {
   list-style: none; /* Remove default bullets */
 }
 
+.overview ul li p {
+  margin: 0;
+}
 .overview ul li::before {
   content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
   color: #ffa700; /* Change the color */
@@ -137,4 +143,15 @@
   .overview ul {
     padding-left: 10px;
   }
+  .overview h4 {
+    font-size: 16px;
+    line-height: 25px;
+  }
+  .overview ul li {
+    /* padding: 0; */
+    line-height: 1;
+  }
+}
+.mb-0 {
+  margin-bottom: 0;
 }
