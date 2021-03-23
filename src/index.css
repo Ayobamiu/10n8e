@@ -7,3 +7,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+h1{
+  text-transform: uppercase;
+}
+h2{
+  text-transform: uppercase;
+}

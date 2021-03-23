@@ -1,6 +1,8 @@
 import axios from "axios";
 import * as actions from "../api";
 
+const localURL = "http://localhost:5005";
+const liveURL = "https://app10n80.herokuapp.com";
 const api = ({ dispatch }) => (next) => async (action) => {
   if (action.type !== actions.apiCallBegan.type) return next(action);
 
@@ -18,7 +20,7 @@ const api = ({ dispatch }) => (next) => async (action) => {
   if (onStart) dispatch({ type: onStart });
   try {
     const response = await axios.request({
-      baseURL: "https://app10n80.herokuapp.com",
+      baseURL: liveURL,
       url,
       method,
       data,

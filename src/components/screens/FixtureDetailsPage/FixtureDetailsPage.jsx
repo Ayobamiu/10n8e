@@ -18,7 +18,7 @@ const FixtureDetailsPage = (props) => {
   const [good, setGood] = useState(false);
   const [message, setMessage] = useState(null);
   useEffect(() => {
-    dispatch(loadfixture(props.match.params.fixtureId));
+    // dispatch(loadfixture(props.match.params.fixtureId));
   }, [good]);
   console.log(targetFixture);
 
@@ -33,7 +33,7 @@ const FixtureDetailsPage = (props) => {
       <div id="fixtureDetailsSectionOne">
         <img src={bignaija1} alt="" />
       </div>
-      <div id="fixtureDetailsSectionTwo" className="hide">
+      {/* <div id="fixtureDetailsSectionTwo" className="hide">
         <div className="container">
           <Nav tabs>
             <NavItem>
@@ -97,27 +97,30 @@ const FixtureDetailsPage = (props) => {
             </TabPane>
           </TabContent>
         </div>
-      </div>
+      </div> */}
       <div id="homePageSectionOneText">
         <div className="overview">
           <h1>Overview</h1>
           <p>
+            Welcome to the 10N8E Esports Family,
+            <br />
+            <br />
             In partnership with Electronic Arts Inc., 10N8E presents to you the
-            2021 FIFA Africa eSeries. The tournament will be the first of its
-            kind on the continent and bring together the best of the best gamers
-            on the continent to enable us showcase Africa to the world. The
-            tournament will comprise of 4 country tournaments and a grand final
-            of the 4 country winners to be give the world the first Africa 10N8E
-            champion. Each tournament will feature 64 players who will earn
-            their spots through a qualification criterion and the games will be
-            in a 1v1 home and away format.
+            2021 Who’s The Greatest Tournament. The tournament will be the first
+            of its kind on the continent and bring together the best of the best
+            gamers in the Nigeria to enable us showcase Nigeria to the world.
+            <br />
+            <br />
+            Each tournament will feature 64 players who will earn their spots
+            through a qualification criterion and the games will be in a 1v1
+            home and away format.
           </p>
         </div>
       </div>
       <div className="orangebg">
         <div id="homePageSectionOneText">
           <div className="overview">
-            <h1>2021 FIFA AFRICA ESERIES</h1>
+            <h1>2021 WHO'S THE GREATEST tournament</h1>
             <h4>
               <b>Round Games – March 26th – 27th</b>
             </h4>
@@ -133,12 +136,6 @@ const FixtureDetailsPage = (props) => {
             <ul>
               <li>
                 <p>This tournament is only for participants from Nigeria</p>
-              </li>
-              <li>
-                <p>
-                  Players below 18 (16 is the limit) must have a parent complete
-                  the consent form
-                </p>
               </li>
               <li>
                 <p>Play must be in FIFA Ultimate Team mode</p>
@@ -157,7 +154,7 @@ const FixtureDetailsPage = (props) => {
               </li>
               <li>
                 <p>
-                  Players 16 and below must have a parent complete the consnet
+                  Players 16 and below must have a parent complete the Consent
                   form
                 </p>
               </li>

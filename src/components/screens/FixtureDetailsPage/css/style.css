@@ -155,3 +155,6 @@
 .mb-0 {
   margin-bottom: 0;
 }
+#fixtureDetails h1 {
+  text-transform: uppercase;
+}

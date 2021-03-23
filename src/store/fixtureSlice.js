@@ -18,14 +18,14 @@ const slice = createSlice({
       fixtures.loading = false;
     },
     fixtureRequested: (fixtures, action) => {
-      fixtures.fixture.loading = true;
+      // fixtures.fixture.loading = true;
     },
     fixtureReceived: (fixtures, action) => {
       fixtures.fixture = action.payload;
-      fixtures.fixture.loading = false;
+      // fixtures.fixture.loading = false;
     },
     fixtureRequestFailed: (fixtures, action) => {
-      fixtures.fixture.loading = false;
+      // fixtures.fixture.loading = false;
     },
     fixtureAddStart: (fixtures, action) => {
       // fixtures.loading = true;
@@ -91,7 +91,6 @@ export const addfixture = (fixture) =>
     url: "/fixtures",
     method: "post",
     data: fixture,
-    headers: { "content-type": "multipart/form-data" },
     onSuccess: fixtureAdded.type,
     onError: fixtureAddFailed.type,
   });

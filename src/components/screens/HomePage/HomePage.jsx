@@ -205,12 +205,14 @@ const HomePage = (props) => {
           <p>
             10N8E is an African Esports organization with mission to support the
             continent, the gamers, athletes, creators and fans to provide a
-            truly world class industry. 10N8E is passionate about the growth of
-            Esports and ensuring Africa’s representation and contribution to the
-            industry growth. SpectaPLAY (the Parent Company of 10N8E) mission is
-            to bring PLAY to the continent. 10N8E is uniquely positioned to
-            support the growing gamers, creators, fans and ambassadors across
-            the continent with its domain knowledge and relationships,
+            truly world class industry. <br />
+            10N8E is passionate about the growth of Esports and ensuring
+            Africa’s representation and contribution to the industry growth.
+            <br />
+            SpectaPLAY (the Parent Company of 10N8E) mission is to bring PLAY to
+            the continent. 10N8E is uniquely positioned to support the growing
+            gamers, creators, fans and ambassadors across the continent with its
+            domain knowledge and relationships,
           </p>
         </div>
       </div>
@@ -260,11 +262,11 @@ const HomePage = (props) => {
                 <img className="w-100" src={ghana} alt="" />
               </div>
             </Link>
-            <Link to="/tournament/60440987ede97a00153d77e1" class="col-4">
+            {/* <Link to="/tournament/60440987ede97a00153d77e1" class="col-4">
               <div class="border bg-light h-228  hide-overflow">
                 <img className="w-100" src={naija} alt="" />
               </div>
-            </Link>
+            </Link> */}
             {/* {allFixtures.map((item) => (
               <Link to={`/tournament/${item._id}`} class="col-4">
                 <div class="border bg-light h-315 hide-overflow">
@@ -304,7 +306,7 @@ const HomePage = (props) => {
         <div class="container">
           <h2 className="mb-20">Highlights</h2>
           <div class="row g-2">
-            {allHighlights.map((item) => (
+            {allHighlights.slice(0, 6).map((item) => (
               <div class="col-6 col-md-4">
                 <div class=" h-332 hide-overflow player-item">
                   <div className="player-box">
