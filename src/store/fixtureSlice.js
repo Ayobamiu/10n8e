@@ -28,16 +28,16 @@ const slice = createSlice({
       // fixtures.fixture.loading = false;
     },
     fixtureAddStart: (fixtures, action) => {
-      // fixtures.loading = true;
-      fixtures.status = "loading";
+      fixtures.loading = true;
+      fixtures.status = "Adding tournament";
     },
     fixtureAdded: (fixtures, action) => {
       fixtures.list.push(action.payload);
-      // fixtures.loading = false;
+      fixtures.loading = false;
       fixtures.status = "Added successfully";
     },
     fixtureAddFailed: (fixtures, action) => {
-      // fixtures.loading = false;
+      fixtures.loading = false;
       fixtures.status = "Failed";
     },
     fixtureRemoved: (fixtures, action) => {
@@ -91,6 +91,7 @@ export const addfixture = (fixture) =>
     url: "/fixtures",
     method: "post",
     data: fixture,
+    onStart: fixtureAddStart.type,
     onSuccess: fixtureAdded.type,
     onError: fixtureAddFailed.type,
   });
@@ -108,4 +109,5 @@ export const removefixture = (id) =>
 export const fixtures = (state) => state.app.fixtures.list;
 export const fixture = (state) => state.app.fixtures.fixture;
 export const loadingFixtures = (state) => state.app.fixtures.loading;
+export const loadingFixtureStatus = (state) => state.app.fixtures.status;
 export const loadingFixture = (state) => state.app.fixtures.fixture.loading;

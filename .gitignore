@@ -1,4 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+Li# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
@@ -27,3 +27,4 @@ yarn-error.log*
 src/components/screens/HomePage/HomePage.jsx
 src/components/screens/HomePage/HomePage.jsx
 .gitignore
+src/components/screens/AdminHome/AdminHome.jsx

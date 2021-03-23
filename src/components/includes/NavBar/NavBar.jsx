@@ -19,6 +19,11 @@ import Cart from "../../screens/Cart/Cart";
 import { useSelector, useDispatch } from "react-redux";
 import { carts } from "../../../store/productSlice";
 import FixtureDetailsPage from "../../screens/FixtureDetailsPage/FixtureDetailsPage";
+import AdminHome from "../../screens/AdminHome/AdminHome";
+import AdminTournaments from "../../screens/AdminTournaments/AdminTournaments";
+import AdminHighLights from "../../screens/AdminHighLights/AdminHighLights";
+import AdminResults from "../../screens/AdminResults/AdminResults";
+import AdminLiveNows from "../../screens/AdminLiveNows/AdminLiveNows";
 
 const NavBar = (props) => {
   const cartsNow = useSelector(carts);
@@ -120,6 +125,11 @@ const NavBar = (props) => {
         <Route component={StorePage} path="/store" />
         <Route component={Fixture} path="/tournament" />
         <Route component={AboutPage} path="/about" />
+        <Route component={AdminTournaments} path="/admin/tournaments" />
+        <Route component={AdminHighLights} path="/admin/highlights" />
+        <Route component={AdminResults} path="/admin/results" />
+        <Route component={AdminLiveNows} path="/admin/live-now" />
+        <Route component={AdminHome} path="/admin" />
         <Route component={HomePage} path="/" />
       </Switch>
     </BrowserRouter>

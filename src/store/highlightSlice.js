@@ -35,6 +35,7 @@ const slice = createSlice({
       highlights.list.push(action.payload);
       highlights.loading = false;
       highlights.status = "Added successfully";
+      window.location.reload();
     },
     highlightAddFailed: (highlights, action) => {
       highlights.loading = false;
@@ -42,6 +43,7 @@ const slice = createSlice({
     },
     highlightRemoved: (highlights, action) => {
       highlights.list.pop((highlight) => highlight._id !== action.payload._id);
+      window.location.reload();
     },
   },
 });
@@ -91,14 +93,14 @@ export const addhighlight = (highlight) =>
     url: "/highlights",
     method: "post",
     data: highlight,
-    headers: { "content-type": "multipart/form-data" },
+    onStart: highlightAddStart.type,
     onSuccess: highlightAdded.type,
     onError: highlightAddFailed.type,
   });
 
 export const removehighlight = (id) =>
   apiCallBegan({
-    url: "/highlights/" + id,
+    url: `/highlights/${id}`,
     method: "delete",
     headers: {
       Authorization: "Bearer " + localStorage.getItem("authToken"),
@@ -108,4 +110,5 @@ export const removehighlight = (id) =>
 
 export const highlights = (state) => state.app.highlights.list;
 export const highlight = (state) => state.app.highlights.highlight;
+export const highlightStatus = (state) => state.app.highlights.status;
 export const loadingHighlight = (state) => state.app.highlights.loading;

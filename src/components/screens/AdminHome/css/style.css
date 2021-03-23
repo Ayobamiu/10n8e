@@ -1,0 +1,39 @@
+#adminhome {
+  height: 100vh;
+  background: linear-gradient(180deg, #130227 40%, #ffffff 40%);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 100px;
+}
+
+#adminhome .item {
+  flex: 0 0 30%;
+  background-color: #ffffff;
+  margin: 20px;
+  height: 222px;
+
+  filter: drop-shadow(-11px 9px 46px rgba(0, 0, 0, 0.25));
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  /* padding-left: 50px; */
+
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 38px;
+  /* identical to box height */
+
+  /* Blujik */
+
+  color: #130227;
+}
+#adminhome .item.not-clickeable {
+  /* opacity: 0.9; */
+  filter: grayscale(0.6);
+  /* filter: saturate(0.1); */
+}
+#adminhome .item img {
+  width: 100%;
+}
