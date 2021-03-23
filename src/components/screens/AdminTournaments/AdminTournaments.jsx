@@ -16,7 +16,7 @@ import {
   loadProduct,
   addproduct,
 } from "../../../store/productSlice";
-  import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { TabContent, TabPane } from "reactstrap";
 import moment from "moment";
 import {
@@ -42,6 +42,8 @@ const AdminTournaments = () => {
   }, [good]);
 
   const [title, setTitle] = useState("");
+  const [description, setdescription] = useState("");
+  const [overview, setOverview] = useState("");
   const [time, setTime] = useState("");
   const [startDate, setStartDate] = useState("");
   const [roundGameEnd, setRoundGameEnd] = useState("");
@@ -76,6 +78,8 @@ const AdminTournaments = () => {
 
     const newFormData = new FormData();
     newFormData.set("title", title);
+    newFormData.set("description", description);
+    newFormData.set("overview", overview);
     newFormData.set("time", time);
     newFormData.set("startDate", startDate);
     newFormData.set("roundGameEnd", roundGameEnd);
@@ -201,6 +205,38 @@ const AdminTournaments = () => {
                 />
                 <div id="titleHelp" class="form-text">
                   This is the display of the Tournament overview
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Description
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-describedby="titleHelp"
+                  required
+                  onChange={(e) => setdescription(e.target.value)}
+                  placeholder="Tournament title"
+                />
+                <div id="titleHelp" class="form-text">
+                  This is the description of the Tournament
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Overview
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-describedby="titleHelp"
+                  required
+                  onChange={(e) => setOverview(e.target.value)}
+                  placeholder="Tournament title"
+                />
+                <div id="titleHelp" class="form-text">
+                  This is the overview of the Tournament
                 </div>
               </div>
               <div class="mb-3">

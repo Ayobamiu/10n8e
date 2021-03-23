@@ -51,8 +51,12 @@ import {
   loadingHighlight,
 } from "../../../store/highlightSlice";
 import moment from "moment";
+import { liveNows, loadliveNows } from "../../../store/liveNowSlice";
 
 const HomePage = (props) => {
+  const allLiveNows = useSelector(liveNows);
+  const firstLivenow = allLiveNows[0];
+  console.log(firstLivenow);
   const allProducts = useSelector(products);
   const allHighlights = useSelector(highlights);
   const allFixtures = useSelector(fixtures);
@@ -65,6 +69,7 @@ const HomePage = (props) => {
     dispatch(loadProducts());
     dispatch(loadhighlights());
     dispatch(loadfixtures());
+    dispatch(loadliveNows());
   }, [good]);
   console.log(loadingFixturesValue);
   const { buttonLabel, className } = props;
@@ -106,7 +111,7 @@ const HomePage = (props) => {
             <ReactPlayer
               height="100%"
               width="100%"
-              url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+              url={firstLivenow && firstLivenow.link}
             />
           </div>
         </Modal>
@@ -252,12 +257,23 @@ const HomePage = (props) => {
         <div class="container">
           <h2 className="mb-20">Upcoming Events</h2>
           <div class="row g-2">
-            <Link to="/tournament/60440987ede97a00153d77e1" class="col-4">
-              <div class="border bg-light h-228  hide-overflow">
-                <img className="w-100" src={naija} alt="" />
-              </div>
-            </Link>
-            <Link to="/tournament/60440987ede97a00153d77e1" class="col-4">
+            {allFixtures &&
+              allFixtures.map((item) => (
+                <Link to={`/tournament/${item._id}`} class="col-4">
+                  <div class="border bg-light h-228  hide-overflow">
+                    <img
+                      className="w-100"
+                      src={item && item.images && item.images[0]}
+                      alt=""
+                    />
+                  </div>
+                </Link>
+              ))}
+            <Link
+              to="/tournament/60440987ede97a00153d77e1"
+              class="col-4"
+              onClick={(e) => e.preventDefault()}
+            >
               <div class="border bg-light h-228  hide-overflow">
                 <img className="w-100" src={ghana} alt="" />
               </div>
@@ -458,7 +474,7 @@ const HomePage = (props) => {
                 <ReactPlayer
                   height="100%"
                   width="100%"
-                  url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+                  url={firstLivenow && firstLivenow.link}
                 />
                 <div className="overlay" onClick={() => toggle()}></div>
               </div>

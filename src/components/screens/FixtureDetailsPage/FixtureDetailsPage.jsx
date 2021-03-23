@@ -11,6 +11,7 @@ import emptyframe from "../../../assets/img/emptyframe.png";
 import ReleaseForm from "../../../assets/docs/ReleaseForm.pdf";
 import Consent from "../../../assets/docs/Consent.pdf";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import moment from "moment";
 
 const FixtureDetailsPage = (props) => {
   const targetFixture = useSelector(fixture);
@@ -18,7 +19,8 @@ const FixtureDetailsPage = (props) => {
   const [good, setGood] = useState(false);
   const [message, setMessage] = useState(null);
   useEffect(() => {
-    // dispatch(loadfixture(props.match.params.fixtureId));
+    dispatch(loadfixture(props.match.params.fixtureId));
+    // dispatch(loadfixture("605a2ea17afc7e58d845ce1d"));
   }, [good]);
   console.log(targetFixture);
 
@@ -28,6 +30,19 @@ const FixtureDetailsPage = (props) => {
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+
+  const rules =
+    targetFixture &&
+    targetFixture.rules &&
+    targetFixture.rules.filter((item) => item !== "");
+  const admins =
+    targetFixture &&
+    targetFixture.admins &&
+    targetFixture.admins.filter((item) => item !== "");
+  const links =
+    targetFixture &&
+    targetFixture.links &&
+    targetFixture.links.filter((item) => item.title !== "");
   return (
     <div id="fixtureDetails">
       <div id="fixtureDetailsSectionOne">
@@ -101,20 +116,7 @@ const FixtureDetailsPage = (props) => {
       <div id="homePageSectionOneText">
         <div className="overview">
           <h1>Overview</h1>
-          <p>
-            Welcome to the 10N8E Esports Family,
-            <br />
-            <br />
-            In partnership with Electronic Arts Inc., 10N8E presents to you the
-            2021 Who’s The Greatest Tournament. The tournament will be the first
-            of its kind on the continent and bring together the best of the best
-            gamers in the Nigeria to enable us showcase Nigeria to the world.
-            <br />
-            <br />
-            Each tournament will feature 64 players who will earn their spots
-            through a qualification criterion and the games will be in a 1v1
-            home and away format.
-          </p>
+          <p>{targetFixture.overview}</p>
         </div>
       </div>
       <div className="orangebg">
@@ -122,71 +124,46 @@ const FixtureDetailsPage = (props) => {
           <div className="overview">
             <h1>2021 WHO'S THE GREATEST tournament</h1>
             <h4>
-              <b>Round Games – March 26th – 27th</b>
+              <b>
+                Round Games –
+                {moment(targetFixture.gameStart).format("MMM Do YYYY")} –
+                {moment(targetFixture.gameEnd).format("MMM Do YYYY")}
+              </b>
             </h4>
             <h4>
-              <b>Round Games – March 26th – 27th</b>
+              <b>
+                Final Game -
+                {moment(targetFixture.finalGame).format("MMM Do YYYY")}
+              </b>
             </h4>
-            <p>
-              It's the same game that you know and love, but with stronger
-              competitions! Think you're up for the challenge? Sign up today and
-              take-home part of that $500 prize pool!
-            </p>
+            <p>{targetFixture.description}</p>
             <h1 className="mt-50-20 mb-0">Rules</h1>
             <ul>
-              <li>
-                <p>This tournament is only for participants from Nigeria</p>
-              </li>
-              <li>
-                <p>Play must be in FIFA Ultimate Team mode</p>
-              </li>
-              <li>
-                <p>
-                  Send an email to info@10N8E.gg with your proof of Nigeria
-                  residency
-                </p>
-              </li>
-              <li>
-                <p>
-                  Include your WhatsApp number and a picture of your FIFA
-                  Ultimate team to the{" "}
-                </p>
-              </li>
-              <li>
-                <p>
-                  Players 16 and below must have a parent complete the Consent
-                  form
-                </p>
-              </li>
-              <li>
-                <p>Registration closes on the 23rd of March 2021.</p>
-              </li>
-              <li>
-                <p>Watch the Registration video</p>
-              </li>
+              {rules &&
+                rules.map((item) => (
+                  <li>
+                    <p>{item}</p>
+                  </li>
+                ))}
             </ul>
 
             <h1 className="mt-50-20 mb-0">Links</h1>
             <ul>
-              <li>
-                <p>
-                  <a href={ReleaseForm} download>
-                    Release form - Document{" "}
-                  </a>
-                </p>
-              </li>
-              <li>
-                <p>
-                  <a href={Consent} download>
-                    Parental Consent - Document
-                  </a>
-                </p>
-              </li>
+              {links &&
+                links.map((item) => (
+                  <li>
+                    <p>
+                      <a href={item.doc} download>
+                        {item.title}
+                      </a>
+                    </p>
+                  </li>
+                ))}
             </ul>
 
             <h1 className="mt-50-20 mb-0">Admins</h1>
 
-            <p>Email - info@10N8E.gg</p>
+            {admins && admins.map((item) => <p>Email - {item}</p>)}
 
             <button className="btn btn-primary mt-50-20">Register</button>
           </div>

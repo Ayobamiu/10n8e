@@ -36,7 +36,7 @@ const AdminHighLights = () => {
   console.log(targetData);
   useEffect(() => {
     dispatch(loadhighlights());
-  }, []);
+  }, [good]);
   return (
     <div id="adminhighlights">
       <div className="blue">
