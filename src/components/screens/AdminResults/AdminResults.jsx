@@ -14,13 +14,18 @@ import classnames from "classnames";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addresult,
+  loadingresult,
   loadresults,
   removeresult,
   results,
   updateresult,
+  resultStatus,
 } from "../../../store/resultSlice";
 
 const AdminResults = () => {
+  const resultIsLoading = useSelector(loadingresult);
+  const targetStatus = useSelector(resultStatus);
+
   const [activeTab, setActiveTab] = useState("1");
 
   const toggle = (tab) => {
@@ -40,6 +45,14 @@ const AdminResults = () => {
   return (
     <div id="adminresults">
       <div className="blue">
+        {resultIsLoading && (
+          <div>
+            <div class="spinner-grow text-light" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <span style={{ color: "#ffffff" }}>{targetStatus}</span>
+          </div>
+        )}
         <Link to="/admin">
           <button>
             <FontAwesomeIcon icon={faHome} color="#C1C0C0" />

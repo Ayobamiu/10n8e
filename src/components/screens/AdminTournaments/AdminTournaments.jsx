@@ -45,6 +45,7 @@ const AdminTournaments = () => {
   const [description, setdescription] = useState("");
   const [overview, setOverview] = useState("");
   const [time, setTime] = useState("");
+  const [link, setLink] = useState("");
   const [startDate, setStartDate] = useState("");
   const [roundGameEnd, setRoundGameEnd] = useState("");
   const [finalGame, setFinalGame] = useState("");
@@ -73,6 +74,9 @@ const AdminTournaments = () => {
   const [rule9, setRule9] = useState("");
   const [rule10, setRule10] = useState("");
 
+  const onEditTournament = () => {
+    toggle("2");
+  };
   const submitFixture = (e) => {
     e.preventDefault();
 
@@ -81,6 +85,7 @@ const AdminTournaments = () => {
     newFormData.set("description", description);
     newFormData.set("overview", overview);
     newFormData.set("time", time);
+    newFormData.set("link", link);
     newFormData.set("startDate", startDate);
     newFormData.set("roundGameEnd", roundGameEnd);
     newFormData.set("finalGame", finalGame);
@@ -131,6 +136,7 @@ const AdminTournaments = () => {
   if (targetStatus === "Added successfully") {
     toggle("1");
   }
+
   return (
     <div id="admintournaments">
       <div className="blue">
@@ -201,10 +207,26 @@ const AdminTournaments = () => {
                   aria-describedby="titleHelp"
                   required
                   onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Tournament title"
+                  placeholder={title || "Tournament title"}
                 />
                 <div id="titleHelp" class="form-text">
                   This is the display of the Tournament overview
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                  Call to Action
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  aria-describedby="titleHelp"
+                  required
+                  onChange={(e) => setLink(e.target.value)}
+                  placeholder={link || "Call to Action"}
+                />
+                <div id="titleHelp" class="form-text">
+                  This is the link to Register{" "}
                 </div>
               </div>
               <div class="mb-3">
@@ -217,7 +239,7 @@ const AdminTournaments = () => {
                   aria-describedby="titleHelp"
                   required
                   onChange={(e) => setdescription(e.target.value)}
-                  placeholder="Tournament title"
+                  placeholder={description || "Tournament description"}
                 />
                 <div id="titleHelp" class="form-text">
                   This is the description of the Tournament
@@ -233,7 +255,7 @@ const AdminTournaments = () => {
                   aria-describedby="titleHelp"
                   required
                   onChange={(e) => setOverview(e.target.value)}
-                  placeholder="Tournament title"
+                  placeholder={overview || "Tournament overview"}
                 />
                 <div id="titleHelp" class="form-text">
                   This is the overview of the Tournament
@@ -250,6 +272,7 @@ const AdminTournaments = () => {
                   aria-describedby="description"
                   required
                   onChange={(e) => setTime(e.target.value)}
+                  defaultValue={time}
                 />
                 <div id="description" class="form-text">
                   The is the time of the event
@@ -266,6 +289,7 @@ const AdminTournaments = () => {
                   aria-describedby="description"
                   required
                   onChange={(e) => setStartDate(e.target.value)}
+                  defaultValue={startDate}
                 />
               </div>
               <div class="mb-3">
@@ -279,6 +303,7 @@ const AdminTournaments = () => {
                   aria-describedby="description"
                   required
                   onChange={(e) => setRoundGameEnd(e.target.value)}
+                  defaultValue={roundGameEnd}
                 />
               </div>
               <div class="mb-3">
@@ -292,6 +317,7 @@ const AdminTournaments = () => {
                   aria-describedby="description"
                   required
                   onChange={(e) => setFinalGame(e.target.value)}
+                  defaultValue={finalGame}
                 />
                 <div id="description" class="form-text">
                   Date of final game
@@ -306,70 +332,70 @@ const AdminTournaments = () => {
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setRule1(e.target.value)}
-                  placeholder="Enter Rule 1"
+                  placeholder={rule1 || "Enter Rule 1"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setRule2(e.target.value)}
-                  placeholder="Enter Rule 2"
+                  placeholder={rule2 || "Enter Rule 2"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setRule3(e.target.value)}
-                  placeholder="Enter Rule 3"
+                  placeholder={rule3 || "Enter Rule 3"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setRule4(e.target.value)}
-                  placeholder="Enter Rule 4"
+                  placeholder={rule4 || "Enter Rule 4"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setRule5(e.target.value)}
-                  placeholder="Enter Rule 5"
+                  placeholder={rule5 || "Enter Rule 5"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setRule6(e.target.value)}
-                  placeholder="Enter Rule 6"
+                  placeholder={rule6 || "Enter Rule 6"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setRule7(e.target.value)}
-                  placeholder="Enter Rule 7"
+                  placeholder={rule7 || "Enter Rule 7"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setRule8(e.target.value)}
-                  placeholder="Enter Rule 8"
+                  placeholder={rule8 || "Enter Rule 8"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setRule9(e.target.value)}
-                  placeholder="Enter Rule 9"
+                  placeholder={rule9 || "Enter Rule 9"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setRule10(e.target.value)}
-                  placeholder="Enter Rule 10"
+                  placeholder={rule10 || "Enter Rule 10"}
                 />
                 <div id="priceHelp" class="form-text">
                   Rules of the game
@@ -384,28 +410,28 @@ const AdminTournaments = () => {
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setAdmin1(e.target.value)}
-                  placeholder="Enter Admin 1 email"
+                  placeholder={admin1 || "Enter Admin 1 email"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setAdmin2(e.target.value)}
-                  placeholder="Enter Admin 2 email"
+                  placeholder={admin2 || "Enter Admin 2 email"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setAdmin3(e.target.value)}
-                  placeholder="Enter Admin 3 email"
+                  placeholder={admin3 || "Enter Admin 3 email"}
                 />
                 <input
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
                   onChange={(e) => setAdmin4(e.target.value)}
-                  placeholder="Enter Admin 4 email"
+                  placeholder={admin4 || "Enter Admin 4 email"}
                 />
 
                 <div id="priceHelp" class="form-text">

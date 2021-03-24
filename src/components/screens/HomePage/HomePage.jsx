@@ -166,7 +166,11 @@ const HomePage = (props) => {
               </div>
             ))}
             <div className="carousel-item">
-              <Link to="/tournament/60440987ede97a00153d77e1">
+              <Link
+                to={`/tournament/${
+                  allSlides && allSlides[0] && allSlides[0].tournament._id
+                }`}
+              >
                 <ReactPlayer
                   height="100%"
                   width="100%"

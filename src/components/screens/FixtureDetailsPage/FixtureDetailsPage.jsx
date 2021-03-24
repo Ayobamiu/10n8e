@@ -3,7 +3,7 @@ import Footer from "../../includes/Footer/Footer";
 import "./css/style.css";
 import { loadfixture, fixture } from "../../../store/fixtureSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
+import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
 import bignaija1 from "../../../assets/img/bignaija1.png";
 import participant1 from "../../../assets/img/participant1.png";
@@ -12,6 +12,7 @@ import ReleaseForm from "../../../assets/docs/ReleaseForm.pdf";
 import Consent from "../../../assets/docs/Consent.pdf";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const FixtureDetailsPage = (props) => {
   const targetFixture = useSelector(fixture);
@@ -165,7 +166,9 @@ const FixtureDetailsPage = (props) => {
 
             {admins && admins.map((item) => <p>Email - {item}</p>)}
 
-            <button className="btn btn-primary mt-50-20">Register</button>
+            <Link to={targetFixture.link}>
+              <button className="btn btn-primary mt-50-20">Register</button>
+            </Link>
           </div>
         </div>
       </div>

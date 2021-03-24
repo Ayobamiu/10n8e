@@ -135,6 +135,7 @@ const AdminHighLights = () => {
                           id="exampleInputEmail1"
                           aria-describedby="emailHelp"
                           onChange={(e) => setUpdateTitle(e.target.value)}
+                          placeholder={item.title}
                         />
                         <div id="emailHelp" class="form-text">
                           Enter the Title to the higlight
