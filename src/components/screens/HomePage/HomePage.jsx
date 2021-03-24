@@ -52,6 +52,7 @@ import {
 } from "../../../store/highlightSlice";
 import moment from "moment";
 import { liveNows, loadliveNows } from "../../../store/liveNowSlice";
+import { loadslides, slides } from "../../../store/slideSlice";
 
 const HomePage = (props) => {
   const allLiveNows = useSelector(liveNows);
@@ -60,6 +61,7 @@ const HomePage = (props) => {
   const allProducts = useSelector(products);
   const allHighlights = useSelector(highlights);
   const allFixtures = useSelector(fixtures);
+  const allSlides = useSelector(slides);
   const loadingFixturesValue = useSelector(loadingFixtures);
   const loadingProductsValue = useSelector(loadingProduct);
   const loadingHighlightValue = useSelector(loadingHighlight);
@@ -70,6 +72,7 @@ const HomePage = (props) => {
     dispatch(loadhighlights());
     dispatch(loadfixtures());
     dispatch(loadliveNows());
+    dispatch(loadslides());
   }, [good]);
   console.log(loadingFixturesValue);
   const { buttonLabel, className } = props;
@@ -139,32 +142,29 @@ const HomePage = (props) => {
         >
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <Link to="/tournament/60440987ede97a00153d77e1">
+              <Link
+                to={`/tournament/${
+                  allSlides && allSlides[0] && allSlides[0].tournament._id
+                }`}
+              >
                 <img
-                  src={one}
+                  src={allSlides && allSlides[0] && allSlides[0].image}
                   className="d-block w-100 slide-image"
                   alt="..."
                 />
               </Link>
             </div>
-            <div className="carousel-item">
-              <Link to="/tournament/60440987ede97a00153d77e1">
-                <img
-                  src={tournamentthree}
-                  className="d-block w-100 slide-image"
-                  alt="..."
-                />
-              </Link>
-            </div>
-            <div className="carousel-item">
-              <Link to="/tournament/60440987ede97a00153d77e1">
-                <img
-                  src={three}
-                  className="d-block w-100 slide-image"
-                  alt="..."
-                />
-              </Link>
-            </div>
+            {allSlides.slice(1).map((item) => (
+              <div className="carousel-item">
+                <Link to={`/tournament/${item.tournament._id}`}>
+                  <img
+                    src={item.image}
+                    className="d-block w-100 slide-image"
+                    alt="..."
+                  />
+                </Link>
+              </div>
+            ))}
             <div className="carousel-item">
               <Link to="/tournament/60440987ede97a00153d77e1">
                 <ReactPlayer

@@ -37,6 +37,17 @@ const slice = createSlice({
       highlights.status = "Added successfully";
       window.location.reload();
     },
+    highlightUpdated: (highlights, action) => {
+      const index = highlights.list.findIndex(
+        (highlight) => highlight._id === action.payload._id
+      );
+      highlights.list[index].link = action.payload.link;
+      highlights.list[index].title = action.payload.title;
+
+      highlights.loading = false;
+      highlights.status = "Updated successfully";
+      window.location.reload();
+    },
     highlightAddFailed: (highlights, action) => {
       highlights.loading = false;
       highlights.status = "Failed";
@@ -59,6 +70,7 @@ export const {
   highlightAddStart,
   highlightAddFailed,
   highlightRemoved,
+  highlightUpdated,
 } = slice.actions;
 
 export default slice.reducer;
@@ -95,6 +107,16 @@ export const addhighlight = (highlight) =>
     data: highlight,
     onStart: highlightAddStart.type,
     onSuccess: highlightAdded.type,
+    onError: highlightAddFailed.type,
+  });
+
+export const updatehighlight = (id, highlight) =>
+  apiCallBegan({
+    url: `/highlights/${id}`,
+    method: "patch",
+    data: highlight,
+    onStart: highlightAddStart.type,
+    onSuccess: highlightUpdated.type,
     onError: highlightAddFailed.type,
   });
 

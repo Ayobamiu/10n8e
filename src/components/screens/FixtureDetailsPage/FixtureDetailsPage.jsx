@@ -46,7 +46,7 @@ const FixtureDetailsPage = (props) => {
   return (
     <div id="fixtureDetails">
       <div id="fixtureDetailsSectionOne">
-        <img src={bignaija1} alt="" />
+        <img src={targetFixture.images && targetFixture.images[0]} alt="" />
       </div>
       {/* <div id="fixtureDetailsSectionTwo" className="hide">
         <div className="container">

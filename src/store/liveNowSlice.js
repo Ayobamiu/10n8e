@@ -37,6 +37,16 @@ const slice = createSlice({
       liveNows.status = "Added successfully";
       window.location.reload();
     },
+    liveNowUpdated: (liveNows, action) => {
+      const index = liveNows.list.findIndex(
+        (liveNow) => liveNow._id === action.payload._id
+      );
+      liveNows.list[index].link = action.payload.link;
+
+      liveNows.loading = false;
+      liveNows.status = "Updated successfully";
+      window.location.reload();
+    },
     liveNowAddFailed: (liveNows, action) => {
       liveNows.loading = false;
       liveNows.status = "Failed";
@@ -59,6 +69,7 @@ export const {
   liveNowAddStart,
   liveNowAddFailed,
   liveNowRemoved,
+  liveNowUpdated,
 } = slice.actions;
 
 export default slice.reducer;
@@ -98,6 +109,16 @@ export const addliveNow = (liveNow) =>
     onError: liveNowAddFailed.type,
   });
 
+export const updateLiveNow = (id, liveNow) =>
+  apiCallBegan({
+    url: `/liveNows/${id}`,
+    method: "patch",
+    data: liveNow,
+    onStart: liveNowAddStart.type,
+    onSuccess: liveNowUpdated.type,
+    onError: liveNowAddFailed.type,
+  });
+  
 export const removeliveNow = (id) =>
   apiCallBegan({
     url: `/liveNows/${id}`,

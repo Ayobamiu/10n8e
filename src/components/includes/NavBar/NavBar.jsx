@@ -24,6 +24,7 @@ import AdminTournaments from "../../screens/AdminTournaments/AdminTournaments";
 import AdminHighLights from "../../screens/AdminHighLights/AdminHighLights";
 import AdminResults from "../../screens/AdminResults/AdminResults";
 import AdminLiveNows from "../../screens/AdminLiveNows/AdminLiveNows";
+import AdminSlides from "../../screens/AdminSlides/AdminSlides";
 
 const NavBar = (props) => {
   const cartsNow = useSelector(carts);
@@ -125,6 +126,7 @@ const NavBar = (props) => {
         <Route component={StorePage} path="/store" />
         <Route component={Fixture} path="/tournament" />
         <Route component={AboutPage} path="/about" />
+        <Route component={AdminSlides} path="/admin/slides" />
         <Route component={AdminTournaments} path="/admin/tournaments" />
         <Route component={AdminHighLights} path="/admin/highlights" />
         <Route component={AdminResults} path="/admin/results" />

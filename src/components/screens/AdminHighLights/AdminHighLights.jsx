@@ -6,6 +6,7 @@ import {
   faHome,
   faPlus,
   faTrash,
+  faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { Modal, TabContent, TabPane } from "reactstrap";
@@ -18,6 +19,7 @@ import {
   loadhighlights,
   highlights,
   removehighlight,
+  updatehighlight,
 } from "../../../store/highlightSlice";
 
 const AdminHighLights = () => {
@@ -28,6 +30,8 @@ const AdminHighLights = () => {
   };
   const [newLink, setNewLink] = useState(null);
   const [newTitle, setNewTitle] = useState(null);
+  const [updateLink, setUpdateLink] = useState(null);
+  const [updateTitle, setUpdateTitle] = useState(null);
   const dispatch = useDispatch();
   const higlightIsLoading = useSelector(loadingHighlight);
   const targetStatus = useSelector(highlightStatus);
@@ -75,18 +79,88 @@ const AdminHighLights = () => {
         <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
             <div className="list">
-              {targetData.map((item) => (
-                <div className="item">
-                  <Link>{item.title}</Link>
-                  <FontAwesomeIcon
-                    icon={faTrash}
-                    color="#DF4B29"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      dispatch(removehighlight(item._id));
-                    }}
-                  />
-                </div>
+              {targetData.map((item, index) => (
+                <>
+                  <div className="item">
+                    <Link>{item.title}</Link>
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      color="#DF4B29"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        dispatch(removehighlight(item._id));
+                      }}
+                      className="icon"
+                    />
+                    <FontAwesomeIcon
+                      icon={faEdit}
+                      color="#DF4B29"
+                      data-bs-toggle="collapse"
+                      href={"#collapseExample" + index}
+                      role="button"
+                      aria-expanded="false"
+                      aria-controls={"collapseExample" + index}
+                      className="icon"
+                      onClick={() => {
+                        setUpdateLink(null);
+                        setUpdateTitle(null);
+                      }}
+                    />
+                  </div>
+                  <div
+                    className="item-edit collapse"
+                    id={"collapseExample" + index}
+                  >
+                    <form
+                      action="add Highlight"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        const update = {};
+                        if (updateLink) {
+                          update.link = updateLink;
+                        }
+                        if (updateTitle) {
+                          update.title = updateTitle;
+                        }
+                        dispatch(updatehighlight(item._id, update));
+                      }}
+                    >
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">
+                          Link title
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          onChange={(e) => setUpdateTitle(e.target.value)}
+                        />
+                        <div id="emailHelp" class="form-text">
+                          Enter the Title to the higlight
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">
+                          Link to Highlight
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          onChange={(e) => setUpdateLink(e.target.value)}
+                        />
+                        <div id="emailHelp" class="form-text">
+                          Enter the link to the higlight
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary">
+                        Submit
+                      </button>
+                    </form>
+                  </div>
+                </>
               ))}
             </div>
           </TabPane>

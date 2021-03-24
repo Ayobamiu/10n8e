@@ -37,6 +37,16 @@ const slice = createSlice({
       results.status = "Added successfully";
       window.location.reload();
     },
+    resultUpdated: (results, action) => {
+      const index = results.list.findIndex(
+        (result) => result._id === action.payload._id
+      );
+      results.list[index].image = action.payload.image;
+
+      results.loading = false;
+      results.status = "Updated successfully";
+      window.location.reload();
+    },
     resultAddFailed: (results, action) => {
       results.loading = false;
       results.status = "Failed";
@@ -59,6 +69,7 @@ export const {
   resultAddStart,
   resultAddFailed,
   resultRemoved,
+  resultUpdated,
 } = slice.actions;
 
 export default slice.reducer;
@@ -95,6 +106,16 @@ export const addresult = (result) =>
     data: result,
     onStart: resultAddStart.type,
     onSuccess: resultAdded.type,
+    onError: resultAddFailed.type,
+  });
+
+export const updateresult = (id, result) =>
+  apiCallBegan({
+    url: `/results/${id}`,
+    method: "patch",
+    data: result,
+    onStart: resultAddStart.type,
+    onSuccess: resultUpdated.type,
     onError: resultAddFailed.type,
   });
 
