@@ -65,7 +65,7 @@
 }
 @media screen and (max-width: 900px) {
   #fixtureDetailsSectionOne {
-    height: 200px;
+    height: auto;
     overflow: hidden;
   }
   #fixtureDetailsSectionTwo {
