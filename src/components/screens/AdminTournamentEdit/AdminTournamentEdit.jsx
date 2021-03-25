@@ -618,7 +618,7 @@ const AdminTournamentEdit = (props) => {
               }}
             />
           </div>
-          <div class="mb-3">
+          {/* <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
               Upload multiple image files of participants
             </label>
@@ -634,7 +634,7 @@ const AdminTournamentEdit = (props) => {
           </div>
           <button type="submit" class="btn btn-primary">
             Add Tournament
-          </button>
+          </button> */}
         </form>
       </div>
     </div>
