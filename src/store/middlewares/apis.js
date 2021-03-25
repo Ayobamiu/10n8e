@@ -20,7 +20,7 @@ const api = ({ dispatch }) => (next) => async (action) => {
   if (onStart) dispatch({ type: onStart });
   try {
     const response = await axios.request({
-      baseURL: localURL,
+      baseURL: liveURL,
       url,
       method,
       data,
