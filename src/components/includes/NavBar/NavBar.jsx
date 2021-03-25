@@ -19,7 +19,7 @@ import Cart from "../../screens/Cart/Cart";
 import { useSelector, useDispatch } from "react-redux";
 import { carts } from "../../../store/productSlice";
 import FixtureDetailsPage from "../../screens/FixtureDetailsPage/FixtureDetailsPage";
-import AdminHome from "../../screens/AdminHome/AdminHome";
+import AdminHome from "../../screens/AdminHomePage/AdminHomePage";
 import AdminTournaments from "../../screens/AdminTournaments/AdminTournaments";
 import AdminHighLights from "../../screens/AdminHighLights/AdminHighLights";
 import AdminResults from "../../screens/AdminResults/AdminResults";
