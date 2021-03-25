@@ -521,7 +521,7 @@ const AdminTournamentEdit = (props) => {
           <br />
           <br />
           <br />
-          <div class="mb-3">
+          {/* <div class="mb-3">
             <label for="price" class="form-label">
               Documents and title
             </label>
@@ -585,6 +585,7 @@ const AdminTournamentEdit = (props) => {
               Supporting Documents
             </div>
           </div>
+       */}
           {targetFixture.images &&
             targetFixture.images.map((item) => (
               <div className="image-preview">
