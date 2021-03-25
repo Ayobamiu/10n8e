@@ -141,46 +141,51 @@ const HomePage = (props) => {
           data-bs-ride="carousel"
         >
           <div className="carousel-inner">
-            <div className="carousel-item active">
-              <Link
-                to={`/tournament/${
-                  allSlides && allSlides[0] && allSlides[0].tournament._id
-                }`}
-              >
-                <img
-                  src={allSlides && allSlides[0] && allSlides[0].image}
-                  className="d-block w-100 slide-image"
-                  alt="..."
-                />
-              </Link>
-            </div>
-            {allSlides.slice(1).map((item) => (
-              <div className="carousel-item">
-                <Link to={`/tournament/${item.tournament._id}`}>
+            {allSlides && (
+              <div className="carousel-item active">
+                <Link
+                  to={`/tournament/${
+                    allSlides && allSlides[0] && allSlides[0].tournament._id
+                  }`}
+                >
                   <img
-                    src={item.image}
+                    src={allSlides && allSlides[0] && allSlides[0].image}
                     className="d-block w-100 slide-image"
                     alt="..."
                   />
                 </Link>
               </div>
-            ))}
-            <div className="carousel-item">
-              <Link
-                to={`/tournament/${
-                  allSlides && allSlides[0] && allSlides[0].tournament._id
-                }`}
-              >
-                <ReactPlayer
-                  height="100%"
-                  width="100%"
-                  url={vid}
-                  playing={true}
-                  loop={true}
-                  muted={true}
-                />
-              </Link>
-            </div>
+            )}
+            {allSlides &&
+              allSlides.slice(1).map((item) => (
+                <div className="carousel-item">
+                  <Link to={`/tournament/${item.tournament._id}`}>
+                    <img
+                      src={item.image}
+                      className="d-block w-100 slide-image"
+                      alt="..."
+                    />
+                  </Link>
+                </div>
+              ))}
+            {allSlides && (
+              <div className="carousel-item">
+                <Link
+                  to={`/tournament/${
+                    allSlides && allSlides[0] && allSlides[0].tournament._id
+                  }`}
+                >
+                  <ReactPlayer
+                    height="100%"
+                    width="100%"
+                    url={vid}
+                    playing={true}
+                    loop={true}
+                    muted={true}
+                  />
+                </Link>
+              </div>
+            )}
           </div>
           <button
             className="carousel-control-prev"

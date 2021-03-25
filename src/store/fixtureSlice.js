@@ -36,6 +36,16 @@ const slice = createSlice({
       fixtures.loading = false;
       fixtures.status = "Added successfully";
     },
+    fixtureUpdated: (fixtures, action) => {
+      const index = fixtures.list.findIndex(
+        (fixture) => fixture._id === action.payload._id
+      );
+      // fixtures.list[index].link = action.payload.link;
+
+      fixtures.loading = false;
+      fixtures.status = "Updated successfully";
+      window.location.reload();
+    },
     fixtureAddFailed: (fixtures, action) => {
       fixtures.loading = false;
       fixtures.status = "Failed";
@@ -57,6 +67,7 @@ export const {
   fixtureAddStart,
   fixtureAddFailed,
   fixtureRemoved,
+  fixtureUpdated,
 } = slice.actions;
 
 export default slice.reducer;
@@ -93,6 +104,36 @@ export const addfixture = (fixture) =>
     data: fixture,
     onStart: fixtureAddStart.type,
     onSuccess: fixtureAdded.type,
+    onError: fixtureAddFailed.type,
+  });
+
+export const updatefixture = (id, fixture) =>
+  apiCallBegan({
+    url: `/fixtures/${id}`,
+    method: "patch",
+    data: fixture,
+    onStart: fixtureAddStart.type,
+    onSuccess: fixtureAdded.type,
+    onError: fixtureAddFailed.type,
+  });
+
+export const addImageToFixture = (id, imageData) =>
+  apiCallBegan({
+    url: `/fixtures/${id}/add-photo`,
+    method: "patch",
+    data: imageData,
+    onStart: fixtureAddStart.type,
+    onSuccess: fixtureUpdated.type,
+    onError: fixtureAddFailed.type,
+  });
+
+export const removeImageFromFixture = (id, imageData) =>
+  apiCallBegan({
+    url: `/fixtures/${id}/delete-photo`,
+    method: "delete",
+    data: imageData,
+    onStart: fixtureAddStart.type,
+    onSuccess: fixtureUpdated.type,
     onError: fixtureAddFailed.type,
   });
 

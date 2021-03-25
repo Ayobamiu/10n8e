@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faEdit,
   faEye,
   faHome,
   faPlus,
@@ -74,8 +75,30 @@ const AdminTournaments = () => {
   const [rule9, setRule9] = useState("");
   const [rule10, setRule10] = useState("");
 
-  const onEditTournament = () => {
+  const onEditTournament = (fixture) => {
     toggle("2");
+    setTitle(fixture.title);
+    setdescription(fixture.description);
+    setOverview(fixture.overview);
+    setTime(fixture.time);
+    setLink(fixture.link);
+    setStartDate(fixture.gameStart);
+    setRoundGameEnd(fixture.gameEnd);
+    setFinalGame(fixture.finalGame);
+    setAdmin1(fixture.admins[0]);
+    setAdmin2(fixture.admins[1]);
+    setAdmin3(fixture.admins[2]);
+    setAdmin4(fixture.admins[3]);
+    setRule1(fixture.rules[0]);
+    setRule2(fixture.rules[1]);
+    setRule3(fixture.rules[2]);
+    setRule3(fixture.rules[3]);
+    setRule4(fixture.rules[4]);
+    setRule5(fixture.rules[5]);
+    setRule6(fixture.rules[6]);
+    setRule7(fixture.rules[7]);
+    setRule8(fixture.rules[8]);
+    setRule10(fixture.rules[9]);
   };
   const submitFixture = (e) => {
     e.preventDefault();
@@ -177,11 +200,23 @@ const AdminTournaments = () => {
         <TabContent activeTab={activeTab}>
           <TabPane tabId="1">
             <div className="list">
-              {targetFixtures.map((fixture) => (
+              {targetFixtures.map((fixture, index) => (
                 <div className="item">
                   <div class="mb-auto">
                     <h5>{fixture.title}</h5>
                   </div>
+                  <Link to={`/admin/tournaments/${fixture._id}`}>
+                    <FontAwesomeIcon
+                      icon={faEdit}
+                      color="#DF4B29"
+                      data-bs-toggle="collapse"
+                      href={"#collapseExample" + index}
+                      role="button"
+                      aria-expanded="false"
+                      aria-controls={"collapseExample" + index}
+                      className="icon"
+                    />
+                  </Link>
 
                   <p>
                     <button
@@ -233,7 +268,7 @@ const AdminTournaments = () => {
                 <label for="exampleInputEmail1" class="form-label">
                   Description
                 </label>
-                <input
+                <textarea
                   type="text"
                   class="form-control"
                   aria-describedby="titleHelp"
@@ -249,7 +284,7 @@ const AdminTournaments = () => {
                 <label for="exampleInputEmail1" class="form-label">
                   Overview
                 </label>
-                <input
+                <textarea
                   type="text"
                   class="form-control"
                   aria-describedby="titleHelp"
@@ -446,7 +481,7 @@ const AdminTournaments = () => {
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
-                  placeholder="Document one title"
+                  placeholder={document1title || "Document one title"}
                   onChange={(e) => setdocument1title(e.target.value)}
                 />
                 <input
@@ -459,7 +494,7 @@ const AdminTournaments = () => {
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
-                  placeholder="Document two title"
+                  placeholder={document2title || "Document two title"}
                   onChange={(e) => setdocument2title(e.target.value)}
                 />
                 <input
@@ -472,7 +507,7 @@ const AdminTournaments = () => {
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
-                  placeholder="Document three title"
+                  placeholder={document3title || "Document three title"}
                   onChange={(e) => setdocument3title(e.target.value)}
                 />
                 <input
@@ -485,7 +520,7 @@ const AdminTournaments = () => {
                   type="text"
                   class="form-control mb-10"
                   aria-describedby="priceHelp"
-                  placeholder="Document four title"
+                  placeholder={document4title || "Document four title"}
                   onChange={(e) => setdocument4title(e.target.value)}
                 />
                 <input

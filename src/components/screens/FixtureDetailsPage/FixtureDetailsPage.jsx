@@ -166,9 +166,9 @@ const FixtureDetailsPage = (props) => {
 
             {admins && admins.map((item) => <p>Email - {item}</p>)}
 
-            <Link to={targetFixture.link}>
+            <a href={targetFixture.link}>
               <button className="btn btn-primary mt-50-20">Register</button>
-            </Link>
+            </a>
           </div>
         </div>
       </div>
