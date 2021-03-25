@@ -31,6 +31,10 @@ const slice = createSlice({
       fixtures.loading = true;
       fixtures.status = "Adding tournament";
     },
+    fixtureUpdateStart: (fixtures, action) => {
+      fixtures.loading = true;
+      fixtures.status = "Updating tournament";
+    },
     fixtureAdded: (fixtures, action) => {
       fixtures.list.push(action.payload);
       fixtures.loading = false;
@@ -68,6 +72,7 @@ export const {
   fixtureAddFailed,
   fixtureRemoved,
   fixtureUpdated,
+  fixtureUpdateStart,
 } = slice.actions;
 
 export default slice.reducer;
@@ -112,7 +117,7 @@ export const updatefixture = (id, fixture) =>
     url: `/fixtures/${id}`,
     method: "patch",
     data: fixture,
-    onStart: fixtureAddStart.type,
+    onStart: fixtureUpdateStart.type,
     onSuccess: fixtureAdded.type,
     onError: fixtureAddFailed.type,
   });
@@ -122,7 +127,45 @@ export const addImageToFixture = (id, imageData) =>
     url: `/fixtures/${id}/add-photo`,
     method: "patch",
     data: imageData,
-    onStart: fixtureAddStart.type,
+    onStart: fixtureUpdateStart.type,
+    onSuccess: fixtureUpdated.type,
+    onError: fixtureAddFailed.type,
+  });
+
+export const addParticipantImageToFixture = (id, imageData) =>
+  apiCallBegan({
+    url: `/fixtures/${id}/add-participant`,
+    method: "patch",
+    data: imageData,
+    onStart: fixtureUpdateStart.type,
+    onSuccess: fixtureUpdated.type,
+    onError: fixtureAddFailed.type,
+  });
+
+export const addDocToFixture = (id, docData) =>
+  apiCallBegan({
+    url: `/fixtures/${id}/add-doc-link`,
+    method: "patch",
+    data: docData,
+    onStart: fixtureUpdateStart.type,
+    onSuccess: fixtureUpdated.type,
+    onError: fixtureAddFailed.type,
+  });
+
+export const removeDocFromFixture = (id, docId) =>
+  apiCallBegan({
+    url: `/fixtures/${id}/${docId}`,
+    method: "delete",
+    onStart: fixtureUpdateStart.type,
+    onSuccess: fixtureUpdated.type,
+    onError: fixtureAddFailed.type,
+  });
+
+export const removeParticipantImageFromFixture = (id, participantId) =>
+  apiCallBegan({
+    url: `/fixtures/${id}/${participantId}/delete-participant`,
+    method: "delete",
+    onStart: fixtureUpdateStart.type,
     onSuccess: fixtureUpdated.type,
     onError: fixtureAddFailed.type,
   });

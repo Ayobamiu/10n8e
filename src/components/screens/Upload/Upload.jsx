@@ -21,7 +21,6 @@ import {
 const Upload = (props) => {
   const targetProducts = useSelector(products);
   const targetFixtures = useSelector(fixtures);
-  console.log(targetFixtures);
   const dispatch = useDispatch();
   const [good, setGood] = useState(false);
   useEffect(() => {

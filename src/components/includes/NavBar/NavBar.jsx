@@ -122,7 +122,7 @@ const NavBar = (props) => {
         <Route component={Cart} path="/cart" />
         <Route component={Upload} path="/upload" />
         <Route component={PaymentPage} path="/pay" />
-        <Route component={FixtureDetailsPage} path="/tournament/:fixtureId" />
+        <Route component={FixtureDetailsPage} path="/tournament/:slug" />
         <Route component={ProductDetailsPage} path="/store/:productId" />
         <Route component={StorePage} path="/store" />
         <Route component={Fixture} path="/tournament" />

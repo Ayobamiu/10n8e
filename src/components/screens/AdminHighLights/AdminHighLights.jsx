@@ -37,7 +37,6 @@ const AdminHighLights = () => {
   const targetStatus = useSelector(highlightStatus);
   const targetData = useSelector(highlights);
   const [good, setGood] = useState(false);
-  console.log(targetData);
   useEffect(() => {
     dispatch(loadhighlights());
   }, [good]);

@@ -57,7 +57,6 @@ import { loadslides, slides } from "../../../store/slideSlice";
 const HomePage = (props) => {
   const allLiveNows = useSelector(liveNows);
   const firstLivenow = allLiveNows[0];
-  console.log(firstLivenow);
   const allProducts = useSelector(products);
   const allHighlights = useSelector(highlights);
   const allFixtures = useSelector(fixtures);
@@ -74,11 +73,11 @@ const HomePage = (props) => {
     dispatch(loadliveNows());
     dispatch(loadslides());
   }, [good]);
-  console.log(loadingFixturesValue);
   const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
   const [modal2, setModal2] = useState(false);
 
+  console.log("allSlides", allSlides);
   const toggle = () => setModal(!modal);
   const toggle2 = () => setModal2(!modal2);
   const [modalVid, setModalVid] = useState("");
@@ -145,7 +144,7 @@ const HomePage = (props) => {
               <div className="carousel-item active">
                 <Link
                   to={`/tournament/${
-                    allSlides && allSlides[0] && allSlides[0].tournament._id
+                    allSlides && allSlides[0] && allSlides[0].tournament.slug
                   }`}
                 >
                   <img
@@ -159,7 +158,7 @@ const HomePage = (props) => {
             {allSlides &&
               allSlides.slice(1).map((item) => (
                 <div className="carousel-item">
-                  <Link to={`/tournament/${item.tournament._id}`}>
+                  <Link to={`/tournament/${item.tournament.slug}`}>
                     <img
                       src={item.image}
                       className="d-block w-100 slide-image"
@@ -172,7 +171,7 @@ const HomePage = (props) => {
               <div className="carousel-item">
                 <Link
                   to={`/tournament/${
-                    allSlides && allSlides[0] && allSlides[0].tournament._id
+                    allSlides && allSlides[0] && allSlides[0].tournament.slug
                   }`}
                 >
                   <ReactPlayer

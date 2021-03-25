@@ -19,7 +19,6 @@ const Fixture = () => {
   useEffect(() => {
     dispatch(loadfixtures());
   }, [good]);
-  console.log(allFixtures);
   return (
     <div id="fixture">
       <div id="sectionOne">

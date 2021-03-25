@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,
   faEye,
+  faFile,
   faHome,
   faPlus,
   faTrash,
@@ -32,6 +33,10 @@ import {
   updatefixture,
   addImageToFixture,
   removeImageFromFixture,
+  addDocToFixture,
+  removeDocFromFixture,
+  removeParticipantImageFromFixture,
+  addParticipantImageToFixture,
 } from "../../../store/fixtureSlice";
 
 const AdminTournamentEdit = (props) => {
@@ -39,7 +44,10 @@ const AdminTournamentEdit = (props) => {
   const targetFixture = useSelector(fixture);
   const targetStatus = useSelector(loadingFixtureStatus);
   const fixtureISLoading = useSelector(loadingFixtures);
-  console.log(targetFixture);
+
+  const targetLinks =
+    targetFixture.links && targetFixture.links.filter((link) => link.doc);
+
   const dispatch = useDispatch();
   const [good, setGood] = useState(false);
   useEffect(() => {
@@ -87,7 +95,7 @@ const AdminTournamentEdit = (props) => {
   const [document1title, setdocument1title] = useState("");
   const [document2title, setdocument2title] = useState("");
   const [document3title, setdocument3title] = useState("");
-  const [document4title, setdocument4title] = useState("");
+  const [document4title, setdocument4title] = useState(null);
   const [rule5, setRule5] = useState(
     targetFixture && targetFixture.rules && targetFixture.rules[4]
   );
@@ -128,7 +136,7 @@ const AdminTournamentEdit = (props) => {
       </div>
 
       <div className="white">
-        <h1>Tournaments</h1>
+        <h1>Edit Tournament</h1>
         <form onSubmit={(e) => submitFixture(e)}>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">
@@ -521,58 +529,37 @@ const AdminTournamentEdit = (props) => {
           <br />
           <br />
           <br />
-          {/* <div class="mb-3">
+          <div>
+            <h4>Documents</h4>
+            {targetLinks &&
+              targetLinks.map((link) => (
+                <div className="mb-10">
+                  <span className="mr-20">{link.title}</span>
+                  <FontAwesomeIcon icon={faFile} color="grey" />{" "}
+                  <button
+                    className="btn btn-danger btn-sm ml-20"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(
+                        removeDocFromFixture(targetFixture._id, link._id)
+                      );
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
+          </div>
+          <div class="mb-3">
             <label for="price" class="form-label">
-              Documents and title
+              Add new Document
             </label>
+
             <input
               type="text"
               class="form-control mb-10"
               aria-describedby="priceHelp"
-              placeholder={targetFixture.document1title || "Document one title"}
-              onChange={(e) => setdocument1title(e.target.value)}
-            />
-            <input
-              type="file"
-              class="form-control mb-10"
-              aria-describedby="priceHelp"
-              onChange={(e) => setdocument1(e.target.files[0])}
-            />
-            <input
-              type="text"
-              class="form-control mb-10"
-              aria-describedby="priceHelp"
-              placeholder={targetFixture.document2title || "Document two title"}
-              onChange={(e) => setdocument2title(e.target.value)}
-            />
-            <input
-              type="file"
-              class="form-control mb-10"
-              aria-describedby="priceHelp"
-              onChange={(e) => setdocument2(e.target.files[0])}
-            />
-            <input
-              type="text"
-              class="form-control mb-10"
-              aria-describedby="priceHelp"
-              placeholder={
-                targetFixture.document3title || "Document three title"
-              }
-              onChange={(e) => setdocument3title(e.target.value)}
-            />
-            <input
-              type="file"
-              class="form-control mb-10"
-              aria-describedby="priceHelp"
-              onChange={(e) => setdocument3(e.target.files[0])}
-            />
-            <input
-              type="text"
-              class="form-control mb-10"
-              aria-describedby="priceHelp"
-              placeholder={
-                targetFixture.document4title || "Document four title"
-              }
+              placeholder="Document title"
               onChange={(e) => setdocument4title(e.target.value)}
             />
             <input
@@ -581,11 +568,24 @@ const AdminTournamentEdit = (props) => {
               aria-describedby="priceHelp"
               onChange={(e) => setdocument4(e.target.files[0])}
             />
-            <div id="priceHelp" class="form-text">
-              Supporting Documents
-            </div>
+            <button
+              className="btn btn-primary"
+              onClick={(e) => {
+                e.preventDefault();
+                if (document4title && document4) {
+                  const newFormData = new FormData();
+                  newFormData.set("title", document4title);
+                  newFormData.append("doc", document4);
+                  dispatch(addDocToFixture(targetFixture._id, newFormData));
+                } else {
+                  alert("Enter doc title and select document");
+                }
+              }}
+            >
+              Add Document
+            </button>
           </div>
-       */}
+          <h4>Tournament images</h4>
           {targetFixture.images &&
             targetFixture.images.map((item) => (
               <div className="image-preview">
@@ -618,23 +618,61 @@ const AdminTournamentEdit = (props) => {
               }}
             />
           </div>
-          {/* <div class="mb-3">
+          <h4>Participants images</h4>
+          {targetFixture.participants &&
+            targetFixture.participants.map((item) => (
+              <div className="image-preview">
+                <img
+                  src={item.image}
+                  width="fit-content"
+                  height="100%"
+                  alt=""
+                />
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  className="icon"
+                  color="#DF4B29"
+                  onClick={() => {
+                    dispatch(
+                      removeParticipantImageFromFixture(
+                        targetFixture._id,
+                        item._id
+                      )
+                    );
+                  }}
+                />
+              </div>
+            ))}
+          <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">
-              Upload multiple image files of participants
+              Upload image file of a participant
             </label>
             <input
               type="file"
               class="form-control"
               required
-              multiple
               onChange={(e) => {
-                setparticipantsImages(e.target.files);
+                setparticipantsImages(e.target.files[0]);
               }}
             />
           </div>
-          <button type="submit" class="btn btn-primary">
-            Add Tournament
-          </button> */}
+          <button
+            type="submit"
+            class="btn btn-primary"
+            onClick={() => {
+              if (participantsImages) {
+                const newFormData = new FormData();
+                newFormData.append("image", participantsImages);
+                dispatch(
+                  addParticipantImageToFixture(targetFixture._id, newFormData)
+                );
+              } else {
+                alert("Select participant image");
+              }
+            }}
+          >
+            Add participant image
+          </button>
         </form>
       </div>
     </div>

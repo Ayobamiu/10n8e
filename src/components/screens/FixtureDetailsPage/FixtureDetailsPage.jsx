@@ -20,10 +20,10 @@ const FixtureDetailsPage = (props) => {
   const [good, setGood] = useState(false);
   const [message, setMessage] = useState(null);
   useEffect(() => {
-    dispatch(loadfixture(props.match.params.fixtureId));
+    window.scroll(0, 0);
+    dispatch(loadfixture(props.match.params.slug));
     // dispatch(loadfixture("605a2ea17afc7e58d845ce1d"));
   }, [good]);
-  console.log(targetFixture);
 
   const [activeTab, setActiveTab] = useState("1");
   const [quantity, setQuantity] = useState(1);

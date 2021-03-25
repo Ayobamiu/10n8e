@@ -34,7 +34,6 @@ const AdminTournaments = () => {
   const targetFixtures = useSelector(fixtures);
   const targetStatus = useSelector(loadingFixtureStatus);
   const fixtureISLoading = useSelector(loadingFixtures);
-  console.log(targetFixtures);
   const dispatch = useDispatch();
   const [good, setGood] = useState(false);
   useEffect(() => {
