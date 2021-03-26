@@ -267,7 +267,7 @@ const HomePage = (props) => {
           <div class="row g-2">
             {allFixtures &&
               allFixtures.map((item) => (
-                <Link to={`/tournament/${item._id}`} class="col-4">
+                <Link to={`/tournament/${item.slug}`} class="col-4">
                   <div class="border bg-light h-228  hide-overflow">
                     <img
                       className="w-100"
