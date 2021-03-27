@@ -102,6 +102,18 @@ export const loadfixture = (fixtureId) => (dispatch, getState) => {
   );
 };
 
+export const loadfixtureWithSlug = (fixtureId) => (dispatch, getState) => {
+  dispatch(
+    apiCallBegan({
+      url: `/fixtures/${fixtureId}/by-slug`,
+      // params: params,
+      onStart: fixtureRequested.type,
+      onSuccess: fixtureReceived.type,
+      onError: fixtureRequestFailed.type,
+    })
+  );
+};
+
 export const addfixture = (fixture) =>
   apiCallBegan({
     url: "/fixtures",

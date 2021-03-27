@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../../includes/Footer/Footer";
 import "./css/style.css";
-import { loadfixture, fixture } from "../../../store/fixtureSlice";
+import { loadfixtureWithSlug, fixture } from "../../../store/fixtureSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { TabContent, TabPane, Nav, NavItem } from "reactstrap";
 import classnames from "classnames";
@@ -21,8 +21,8 @@ const FixtureDetailsPage = (props) => {
   const [message, setMessage] = useState(null);
   useEffect(() => {
     window.scroll(0, 0);
-    dispatch(loadfixture(props.match.params.slug));
-    // dispatch(loadfixture("605a2ea17afc7e58d845ce1d"));
+    dispatch(loadfixtureWithSlug(props.match.params.slug));
+    // dispatch(loadfixtureWithSlug("605a2ea17afc7e58d845ce1d"));
   }, [good]);
 
   const [activeTab, setActiveTab] = useState("1");
@@ -175,19 +175,19 @@ const FixtureDetailsPage = (props) => {
       <div id="fixtureDetailsSectionTwo">
         <h1 style={{ marginBottom: "50px" }}>Participants</h1>
         <div className="row g-3 justify-content-between">
-          <div className="col-4 ">
+          {/* <div className="col-4 ">
             <div className="image">
               <img src={emptyframe} alt="" />
             </div>
-          </div>
-          {/* {targetFixture.participants &&
+          </div> */}
+          {targetFixture.participants &&
             targetFixture.participants.map((item) => (
               <div className="col-4 ">
                 <div className="image">
                   <img src={item.image} alt="" />
                 </div>
               </div>
-            ))} */}
+            ))}
         </div>
       </div>
       <Footer />
